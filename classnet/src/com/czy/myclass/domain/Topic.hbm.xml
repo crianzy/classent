@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.czy.myclass.domain">
+
+	<class name="Topic" >
+		<id name="id">
+			<generator class="native" />
+		</id>
+		<property name="title"/>
+		<property name="detail"/>
+		<property name="pubTime"/>
+		<property name="replyNum"/>
+		<property name="editTime"></property>
+		<property name="editUsername"/>
+		<many-to-one name="user" class="User" column="userId"   lazy="false" />
+		<many-to-one name="topicMenu" class="TopicMenu" column="topicMenuId" lazy="false"/>
+		<set name="answers" lazy="false" order-by="pubTime ASC">
+			<key column="topicId"></key>
+			<one-to-many class="TopicAnswer"/>
+		</set>
+	</class>
+
+</hibernate-mapping>

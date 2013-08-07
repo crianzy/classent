@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.czy.myclass.domain">
+
+	<class name="Source">
+		<id name="id">
+			<generator class="native" />
+		</id>
+		<property name="name" />
+		<property name="pubTime" />
+		<property name="fileSize" />
+		<property name="filename" />
+		<property name="fileContentType"/>
+		<many-to-one name="sourceMenu" column="sourceMenuId"
+			class="SourceMenu"></many-to-one>
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="classnet"
+  id="myeclipse.1375247053854"
+  context-root="/classnet"
+  j2ee-spec="6.0"
+  archive="classnet.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
