@@ -2,8 +2,6 @@ package com.czy.myclass.action;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -15,11 +13,10 @@ import com.opensymphony.xwork2.ActionContext;
 
 @Controller
 @Scope("prototype")
-public class TopicAction {
+public class TopicAction extends BaseAction{
 
-	@Resource
-	private TopicService topicService;
-
+	private static final long serialVersionUID = 1380982741227271851L;
+	
 	private Long topicMenuId;
 	private Long topicId;
 	private String content;

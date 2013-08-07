@@ -8,19 +8,22 @@ import com.opensymphony.xwork2.ActionContext;
 
 @Controller
 @Scope("prototype")
-public class UserAction extends BaseAction<User> {
+public class UserAction extends BaseAction {
 
 	private static final long serialVersionUID = 7415497608770607518L;
 
 	private String usernameFlag;
+	private String username;
+	private String password;
+	private String email;
 
 	public String loginUI() {
 		return "loginUI";
 	}
 
 	public String login() {
-		User user = null;
-		user = userService.checkLong(model.getUsername(), model.getPassword());
+		User user = new User();
+		user = userService.checkLong(getUsername(), getPassword());
 		System.out.println("useraction---------------->>>>>   user = " + user);
 		if (user == null) {
 			// TODO 此处登录错误信息 存在 session中 有待改进
@@ -48,11 +51,15 @@ public class UserAction extends BaseAction<User> {
 	}
 
 	public String regist() {
-		if(userService.checkUsernameEnable(model.getUsername())){
-			User user = userService.regist(model);
+		if (userService.checkUsernameEnable(this.username)) {
+			User registUser = new User();
+			registUser.setUsername(username);
+			registUser.setPassword(password);
+			registUser.setEmail(email);
+			User user = userService.regist(registUser);
 			ActionContext.getContext().getSession().put("user", user);
 			return "registSuccess";
-		}else{
+		} else {
 			return "registUI";
 		}
 	}
@@ -64,5 +71,31 @@ public class UserAction extends BaseAction<User> {
 	public void setUsernameFlag(String usernameFlag) {
 		this.usernameFlag = usernameFlag;
 	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	
 
 }

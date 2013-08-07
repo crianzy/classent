@@ -11,7 +11,7 @@ import com.opensymphony.xwork2.ActionContext;
 
 @Controller
 @Scope("prototype")
-public class NewsAction extends BaseAction<NewsType> {
+public class NewsAction extends BaseAction {
 
 	private static final long serialVersionUID = 3104691779320434226L;
 	private Long newsId;
@@ -19,43 +19,41 @@ public class NewsAction extends BaseAction<NewsType> {
 
 	public String index() throws Exception {
 		//新闻类型 栏目列表
-		List<NewsType> newsTypeList = newsSerice.getAllNewTypeList();
+		List<NewsType> newsTypeList = newsService.getAllNewTypeList();
 		ActionContext.getContext().put("newsTypeList", newsTypeList);
 		//最新新闻
-		List<News> lastNewsList = newsSerice.getLastNews();
+		List<News> lastNewsList = newsService.getLastNews();
 		ActionContext.getContext().put("lastNewsList", lastNewsList);
 		//推荐新闻
-		List<News> tuijianNewsList = newsSerice.getTuijianNews();
+		List<News> tuijianNewsList = newsService.getTuijianNews();
 		ActionContext.getContext().put("tuijianNewsList", tuijianNewsList);
 
 		return "newsIndex";
 	}
 
 	public String readNews() {
-		News news = newsSerice.readNews(newsId);
+		News news = newsService.readNews(newsId);
 		System.out.println(news.getTitle());
 		ActionContext.getContext().put("news", news);
 		//新闻类型 栏目列表
-		List<NewsType> newsTypeList = newsSerice.getAllNewTypeList();
+		List<NewsType> newsTypeList = newsService.getAllNewTypeList();
 		ActionContext.getContext().put("newsTypeList", newsTypeList);
 		return "readNews";
 	}
 	
 	public String newsType(){
 		//获取当前 id 的 newstype
-		NewsType newsType = newsSerice.getNewsTypeById(newsTypeId);
+		NewsType newsType = newsService.getNewsTypeById(newsTypeId);
 		ActionContext.getContext().put("newsType", newsType);
 		
-		model.setName(newsType.getName());
-		model = newsType;
 		//新闻类型 栏目列表
-		List<NewsType> newsTypeList = newsSerice.getAllNewTypeList();
+		List<NewsType> newsTypeList = newsService.getAllNewTypeList();
 		ActionContext.getContext().put("newsTypeList", newsTypeList);
 		//热点新闻
-		List<News> hotNewsList = newsSerice.getHotNews();
+		List<News> hotNewsList = newsService.getHotNews();
 		ActionContext.getContext().put("hotNewsList",hotNewsList);
 		//推荐新闻
-		List<News> tuijianNewsList = newsSerice.getTuijianNews();
+		List<News> tuijianNewsList = newsService.getTuijianNews();
 		ActionContext.getContext().put("tuijianNewsList", tuijianNewsList);
 		return "newsType";
 	}

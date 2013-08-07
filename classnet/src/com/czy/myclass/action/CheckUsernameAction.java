@@ -1,20 +1,13 @@
 package com.czy.myclass.action;
 
-import javax.annotation.Resource;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.czy.myclass.service.UserService;
-import com.opensymphony.xwork2.ActionSupport;
-
 @Controller
 @Scope("prototype")
-public class CheckUsernameAction extends ActionSupport {
+public class CheckUsernameAction extends BaseAction {
 
 	private static final long serialVersionUID = 2687505252508687628L;
-	@Resource
-	private UserService userService;
 
 	private String username;
 	private String usernameFlag;

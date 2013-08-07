@@ -2,23 +2,16 @@ package com.czy.myclass.action;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.czy.myclass.dto.ClazzMenuDto;
-import com.czy.myclass.service.ClazzService;
-import com.opensymphony.xwork2.ActionSupport;
 
 @Controller
 @Scope("prototype")
-public class ChangeMenuAction extends ActionSupport {
+public class ChangeMenuAction extends BaseAction {
 
 	private static final long serialVersionUID = -8420433734580207594L;
-
-	@Resource
-	private ClazzService clazzService;
 
 	private Long pid;
 

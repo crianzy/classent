@@ -4,8 +4,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -16,15 +14,12 @@ import com.czy.myclass.domain.ClazzType;
 import com.czy.myclass.dto.ClazzMenuDto;
 import com.czy.myclass.service.ClazzService;
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
 
 @Controller
 @Scope("prototype")
-public class ClazzAction extends ActionSupport {
+public class ClazzAction extends BaseAction {
 
 	private static final long serialVersionUID = -1622957345522557223L;
-	@Resource
-	private ClazzService clazzService;
 
 	private Long clazzId;
 	private Long clazzTypeId;

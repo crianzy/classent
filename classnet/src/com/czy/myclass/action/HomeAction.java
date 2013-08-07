@@ -2,8 +2,6 @@ package com.czy.myclass.action;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -14,32 +12,18 @@ import com.czy.myclass.domain.SourceMenu;
 import com.czy.myclass.domain.Topic;
 import com.czy.myclass.domain.TopicMenu;
 import com.czy.myclass.dto.ClazzMenuDto;
-import com.czy.myclass.service.ClazzService;
-import com.czy.myclass.service.NewsSevrice;
-import com.czy.myclass.service.SourceService;
-import com.czy.myclass.service.TopicService;
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
 
 @Controller
 @Scope("prototype")
-public class HomeAction extends ActionSupport {
+public class HomeAction extends BaseAction {
 
 	private static final long serialVersionUID = 329394280578895979L;
-
-	@Resource
-	private NewsSevrice newsSerice;
-	@Resource
-	private TopicService topicService;
-	@Resource
-	private ClazzService clazzService;
-	@Resource
-	private SourceService sourceService;
 
 	@Override
 	public String execute() throws Exception {
 		// 推荐新闻
-		List<News> tuijianNewsList = newsSerice.getTuijianNews();
+		List<News> tuijianNewsList = newsService.getTuijianNews();
 		ActionContext.getContext().put("tuijianNewsList", tuijianNewsList);
 		
 		//课程中心 

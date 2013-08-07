@@ -2,28 +2,19 @@ package com.czy.myclass.action;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.czy.myclass.domain.Topic;
 import com.czy.myclass.domain.TopicMenu;
 import com.czy.myclass.domain.User;
-import com.czy.myclass.service.TopicService;
-import com.czy.myclass.service.UserService;
 import com.opensymphony.xwork2.ActionContext;
 
 @Controller
 @Scope("prototype")
-public class masterAction {
-
-	@Resource
-	private UserService userService;
-
-	@Resource
-	private TopicService topicService;
-
+public class masterAction extends BaseAction{
+	private static final long serialVersionUID = 9058487080818543570L;
+	
 	private Long topicMenuId;
 	private Long topicId;
 	private String title;
