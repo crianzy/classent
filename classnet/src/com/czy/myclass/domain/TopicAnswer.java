@@ -13,6 +13,7 @@ public class TopicAnswer implements Serializable {
 	private Date pubTime = new Date();
 	private Topic topic;
 	private Integer status = 1;
+	private Integer flowNum ;
 	
 	
 	public Long getId() {
@@ -53,6 +54,12 @@ public class TopicAnswer implements Serializable {
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	public Integer getFlowNum() {
+		return flowNum;
+	}
+	public void setFlowNum(Integer flowNum) {
+		this.flowNum = flowNum;
 	}
 	
 	

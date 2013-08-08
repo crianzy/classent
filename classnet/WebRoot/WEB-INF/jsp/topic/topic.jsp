@@ -9,7 +9,40 @@
 		<link href="css/article.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="fckeditor/fckeditor.js"></script>
+		<script type="text/javascript">
+			function gotoPage(num){
+				location="topicAction_topic?topicId="+${topicId}+"&currentPage="+num
+			}
+		</script>
+<style type="text/css">
+/* 分页 */
+.class_page_topic {
+	clear: left;
+	text-align: left;
+	color: #4C9DCE;
+}
 
+.class_page_topic ul,.class_page_topic li {
+	padding: 0px;
+	margin: 0px 0px 0px 10px;
+	text-align: left;
+	list-style: none;
+}
+
+.class_page_topic a,.class_page_topic strong {
+	display: inline-block;
+	border: 1px solid #D7E5F2;
+	line-height: 160%;
+	text-decoration: none;
+	padding: 0 5px;
+	color: #4C9DCE;
+}
+
+.class_page_topic strong {
+	background: #5384AF;
+	color: #fff;
+}
+</style>
 	</head>
 	<body>
 		<div class="wrap">
@@ -78,7 +111,7 @@
 								</tr>
 								</table>
 								<s:if test="#topic.answers!=null">
-								<s:iterator value="#topic.answers" status="vs">
+								<s:iterator value="list" >
 								<table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#a8d7f1" style="margin-top:8px;">
 								<tr>
 									<td width="20%" bgcolor="#ffffff" rowspan="3">
@@ -99,7 +132,7 @@
 									<table width="100%" border="0" cellpadding="0" cellspacing="0">
 									<tr>
 										<td align="left" height="24" style="padding-left:10px;">发表于：<s:date name="pubTime" format="yyyy-MM-dd HH:mm:ss"/></td>	
-										<td align="right" style="padding-right:10px;font-weight: bold;"># ${vs.index+1}楼</td>
+										<td align="right" style="padding-right:10px;font-weight: bold;"># ${flowNum}楼</td>
 									</tr>
 									</table>
 									</td>
@@ -146,6 +179,16 @@
 								</tr>
 								</table>
 								</s:iterator>
+								<table width="100%" border="0" cellpadding="0" cellspacing="1" style="margin-top:8px;border:1px solid #a8d7f1">
+									<tr >
+										<td></td>
+										<td align="right" width="80%" height="20">
+											<div class="class_page_topic" align="right"><span class="pagecss">
+												<jsp:include page="/WEB-INF/jsp/pub/page.jsp" ></jsp:include>
+									 		</span></div>
+										</td>
+									</tr>
+								</table>
 								</s:if>
 								<table width="100%" border="0" cellpadding="0" cellspacing="1" style="margin-top:8px;border:1px solid #a8d7f1">
 								<tr>

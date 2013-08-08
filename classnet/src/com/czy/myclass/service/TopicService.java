@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.czy.myclass.domain.Topic;
 import com.czy.myclass.domain.TopicMenu;
+import com.czy.myclass.dto.PageBean;
 
 public interface TopicService {
 
@@ -21,5 +22,10 @@ public interface TopicService {
 	public List<Topic> getUserTopicList(Long userId, Long topicMenuId);
 
 	public List<Topic> getLastTopicList(int i);
+	
+	public PageBean getTopicPageBean(int currentPage,Long topicMenuId);
+	
+	public PageBean getAnswerPageBean(int currentPage,Long topicId);
+	
 
 }

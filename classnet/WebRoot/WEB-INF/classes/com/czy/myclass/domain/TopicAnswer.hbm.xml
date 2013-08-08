@@ -12,7 +12,7 @@
 		<property name="content"/>
 		<property name="pubTime"/>
 		<property name="status"/>
-		
+		<property name="flowNum"/>
 		<many-to-one name="topic" class="Topic" column="topicId" lazy="false"/>
 		<many-to-one name="user" class="User" column="userId" fetch="select" lazy="false"/>
 	</class>

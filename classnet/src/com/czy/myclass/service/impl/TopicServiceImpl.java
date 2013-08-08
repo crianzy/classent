@@ -16,6 +16,7 @@ import com.czy.myclass.domain.Topic;
 import com.czy.myclass.domain.TopicAnswer;
 import com.czy.myclass.domain.TopicMenu;
 import com.czy.myclass.domain.User;
+import com.czy.myclass.dto.PageBean;
 import com.czy.myclass.service.TopicService;
 
 @Service
@@ -52,13 +53,15 @@ public class TopicServiceImpl implements TopicService {
 	public void replay(Long userId, Long topicId, String content) {
 		Date date = new Date();
 		User user = userDao.getById(userId);
+		Topic topic = topicDao.getById(topicId);
+		int flowNum = topic.getReplyNum()+2;
 		TopicAnswer answer = new TopicAnswer();
 		answer.setContent(content);
 		answer.setPubTime(date);
 		answer.setUser(user);
+		answer.setFlowNum(flowNum);
 		topicAnswerDao.save(answer);
 		//更新 topic
-		Topic topic = topicDao.getById(topicId);
 		topic.getAnswers().add(answer);
 		topic.setEditUsername(user.getUsername());
 		topic.setReplyNum(topic.getReplyNum()+1);
@@ -105,5 +108,18 @@ public class TopicServiceImpl implements TopicService {
 		List<Topic> topicList =  topicDao.getLastTopicList(n);
 		return topicList;
 	}
+
+	@Override
+	public PageBean getTopicPageBean(int currentPage, Long topicMenuID) {
+		PageBean pageBean =  topicDao.getPage(currentPage, topicMenuID);
+		return pageBean;
+	}
+
+	@Override
+	public PageBean getAnswerPageBean(int currentPage, Long topicId) {
+		PageBean pageBean =  topicAnswerDao.getPage(currentPage, topicId);
+		return pageBean;
+	}
+
 
 }

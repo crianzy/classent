@@ -8,18 +8,20 @@ import org.springframework.stereotype.Controller;
 import com.czy.myclass.domain.Topic;
 import com.czy.myclass.domain.TopicMenu;
 import com.czy.myclass.domain.User;
+import com.czy.myclass.dto.PageBean;
 import com.czy.myclass.service.TopicService;
 import com.opensymphony.xwork2.ActionContext;
 
 @Controller
 @Scope("prototype")
-public class TopicAction extends BaseAction{
+public class TopicAction extends BaseAction {
 
 	private static final long serialVersionUID = 1380982741227271851L;
-	
+
 	private Long topicMenuId;
 	private Long topicId;
 	private String content;
+	private int currentPage = 1;
 
 	public String index() {
 		// 所有版块
@@ -33,8 +35,8 @@ public class TopicAction extends BaseAction{
 		List<TopicMenu> topicMenuList = topicService.getAllTopicMenu();
 		ActionContext.getContext().put("topicMenuList", topicMenuList);
 		// 当前id 的版块
-		TopicMenu topicMeun = topicService.getTopicMenu(topicMenuId);
-		ActionContext.getContext().put("topicMeun", topicMeun);
+		PageBean pageBean = topicService.getTopicPageBean(currentPage, topicMenuId);
+		ActionContext.getContext().getValueStack().push(pageBean);
 		return "menuList";
 	}
 
@@ -44,6 +46,8 @@ public class TopicAction extends BaseAction{
 		}
 		Topic topic = topicService.getTopic(topicId);
 		ActionContext.getContext().put("topic", topic);
+		PageBean pageBean = topicService.getAnswerPageBean(currentPage, topicId);
+		ActionContext.getContext().getValueStack().push(pageBean);
 		return "topic";
 	}
 
@@ -84,6 +88,14 @@ public class TopicAction extends BaseAction{
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public int getCurrentPage() {
+		return currentPage;
+	}
+
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
 	}
 
 }

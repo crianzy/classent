@@ -11,7 +11,6 @@
 			data:{username:username,password:password},
 			success:function(data){
 				if(data.loginFlag=="0"){
-					alert("tes");
 					location.reload();
 				}
 				else{

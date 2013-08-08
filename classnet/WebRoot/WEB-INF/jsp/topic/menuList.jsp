@@ -7,6 +7,11 @@
 <title>互动交流</title>
 <link href="css/default.css" rel="stylesheet" type="text/css" />
 <link href="css/article.css" rel="stylesheet" type="text/css" />
+<script>
+	function gotoPage(num){
+		location = "topicAction_menuList?topicMenuId="+${topicMenuId}+"&currentPage="+num;
+	}
+</script>
 <style type="text/css">
 /* 分页 */
 .class_page_topic {
@@ -38,6 +43,7 @@
 </style>
 </head>
 <body>
+<s:debug></s:debug>
 	<div class="wrap">
 			<!--头部定义开始-->
 			<div id="header" class="main">
@@ -75,7 +81,7 @@
 								<tr>
 									<td align="left" width="70%" height="20">
 										<div class="class_page_topic"><span class="pagecss">
-										分页
+											<jsp:include page="/WEB-INF/jsp/pub/page.jsp" ></jsp:include>
 								 		</span></div>
 									</td>
 									<td align="right" height="20">
@@ -92,8 +98,8 @@
 									<td width="10%" align="center" style="color:#ffffff;font-weight: bold;">回复</td>
 									<td width="15%" align="center" style="color:#ffffff;font-weight: bold;">最后更新</td>
 								</tr>
-								<s:if test="#topicMeun.topics!=null">
-									<s:iterator value="#topicMeun.topics">
+								<s:if test="list!=null">
+									<s:iterator value="list">
 									<tr>
 										<td align="left" height="40" bgcolor="${vs.index%2==1?'#e8e9f9':'#ffffff'}" style="padding-left:6px;"><a href="topicAction_topic?topicId=${id }">${title}</a></td>
 										<td align="center" bgcolor="${vs.index%2==1?'#e8e9f9':'#ffffff'}">${user.username}<p><s:date name="pubTime" format="MM-dd HH:mm" /></p></td>
@@ -112,7 +118,7 @@
 								<tr>
 									<td align="left" width="70%" height="20">
 										<div class="class_page_topic"><span class="pagecss">
-											分页
+											<jsp:include page="/WEB-INF/jsp/pub/page.jsp" ></jsp:include>
 								 		</span></div>
 									</td>
 									<td align="right" height="20">
