@@ -16,12 +16,18 @@ public class UserAction extends BaseAction {
 	private String username;
 	private String password;
 	private String email;
+	/**
+	 * 跳转来的  url
+	 */
+	private String url;
 
 	public String loginUI() {
+		System.out.println(url);
 		return "loginUI";
 	}
 
 	public String login() {
+		
 		User user = new User();
 		user = userService.checkLong(getUsername(), getPassword());
 		System.out.println("useraction---------------->>>>>   user = " + user);
@@ -31,6 +37,9 @@ public class UserAction extends BaseAction {
 		} else {
 			ActionContext.getContext().getSession().remove("errorMsg");
 			ActionContext.getContext().getSession().put("user", user);
+		}
+		if(user!=null&&!"".equals(url.trim())){
+			return "toUrl";
 		}
 		return "toHome";
 	}
@@ -95,6 +104,16 @@ public class UserAction extends BaseAction {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	
+	
 	
 	
 

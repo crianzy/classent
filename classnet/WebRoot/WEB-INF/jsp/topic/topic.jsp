@@ -182,9 +182,10 @@
 											<span style="font-weight: bold;">回复内容</span>
 											<s:if test="#session.user == null">
 												匿名用户不能发表回复！ 
-											<a href="userAction_loginUI" target="_blank"><font style="color:red">登录</font></a> | <a href="userAction_registUI" target="_blank"><font style="color:red">注册</font></a>
+											<a href="userAction_loginUI?url=topicAction_topic?topicId=${topic.id }"><font style="color:red">登录</font></a> | <a href="userAction_registUI" ><font style="color:red">注册</font></a>
 											</s:if>
 										</td></tr>
+										<s:else>
 										<tr>
 											<td align="left"><textarea id="content" name="content" ${empty user?'disabled=disabled':'' }></textarea></td>
 											<script type="text/javascript">
@@ -204,6 +205,7 @@
 												<input type="hidden" name="topicId" value="${topic.id}"/>
 											</td>
 										</tr>
+										</s:else>
 										</table>
 										</form>
 									</td>

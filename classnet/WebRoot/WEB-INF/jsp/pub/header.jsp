@@ -4,22 +4,22 @@
 <script type="text/javascript">
 var url = document.URL;
 var index="home";
-if(url.indexOf("/news/")!=-1){
+if(url.indexOf("newsAction_")!=-1){
 	index="news";
 }
-else if(url.indexOf("/clazz/")!=-1){
+else if(url.indexOf("clazzAction_")!=-1){
 	index="clazz";
 }
-else if(url.indexOf("/source/")!=-1){
+else if(url.indexOf("sourceAction_")!=-1){
 	index="source";
 } 
-else if(url.indexOf("/topic/")!=-1){
+else if(url.indexOf("topicAction_")!=-1){
 	index="topic";
 } 
-else if(url.indexOf("/master/")!=-1){
+else if(url.indexOf("masterAction_")!=-1){
 	index="master";
 } 
-if(index=="index"){
+if(index=="home"){
 	document.write('<li id="topTabOn"><a href="hoem"><span>网站首页</span></a></li>');
 }
 else{

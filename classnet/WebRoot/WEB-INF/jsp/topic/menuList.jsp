@@ -79,7 +79,9 @@
 								 		</span></div>
 									</td>
 									<td align="right" height="20">
+										<s:if test="#session.user!=null">
 										<input type="button" value="发帖" onclick="location='masterAction_postTopicUI?topicMenuId=${topicMeun.id }';"/>
+										</s:if>
 									</td>
 								</tr>
 								</table>
@@ -114,7 +116,9 @@
 								 		</span></div>
 									</td>
 									<td align="right" height="20">
-										<input type="button" value="发帖" onclick="location='masterAction_postTopicUI?topicMenuId=${topicMeun.id }';"/>
+										<s:if test="#session.user!=null">
+											<input type="button" value="发帖" onclick="location='masterAction_postTopicUI?topicMenuId=${topicMeun.id }';"/>
+										</s:if>
 									</td>
 								</tr>
 								</table>

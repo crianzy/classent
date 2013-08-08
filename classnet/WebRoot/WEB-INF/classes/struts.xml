@@ -10,13 +10,19 @@
 
 	<package name="default" namespace="/" extends="json-default">
 
+
+		<action name="redirectAction" class="redirectAction">
+			<result name="success">/WEB-INF/jsp/redirect.jsp</result>			
+		</action>
 		<action name="home" class="homeAction">
 			<result name="success">/WEB-INF/jsp/home.jsp</result>
 		</action>
 		<action name="userAction_*" class="userAction" method="{1}">
 			<result name="toHome" type="redirectAction">home</result>
+			<result name="loginUI">/WEB-INF/jsp/loginUI.jsp</result>
 			<result name="registUI">/WEB-INF/jsp/regist.jsp</result>
 			<result name="registSuccess">/WEB-INF/jsp/registSuccess.jsp</result>
+			<result name="toUrl" type="redirectAction">redirectAction?url=${url }</result>
 		</action>
 
 		<action name="checkUsername" class="checkUsernameAction">
