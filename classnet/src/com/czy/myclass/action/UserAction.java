@@ -16,10 +16,24 @@ public class UserAction extends BaseAction {
 	private String username;
 	private String password;
 	private String email;
+	private String loginFlag;
+
 	/**
-	 * 跳转来的  url
+	 * 跳转来的 url
 	 */
 	private String url;
+
+	public String loginAjax() {
+		User user = new User();
+		user = userService.checkLong(getUsername(), getPassword());
+		if (user == null) {
+			loginFlag = "1";
+		} else {
+			loginFlag = "0";
+			ActionContext.getContext().getSession().put("user", user);
+		}
+		return "loginAjax";
+	}
 
 	public String loginUI() {
 		System.out.println(url);
@@ -27,7 +41,6 @@ public class UserAction extends BaseAction {
 	}
 
 	public String login() {
-		
 		User user = new User();
 		user = userService.checkLong(getUsername(), getPassword());
 		System.out.println("useraction---------------->>>>>   user = " + user);
@@ -38,7 +51,7 @@ public class UserAction extends BaseAction {
 			ActionContext.getContext().getSession().remove("errorMsg");
 			ActionContext.getContext().getSession().put("user", user);
 		}
-		if(user!=null&&!"".equals(url.trim())){
+		if (user != null && !"".equals(url.trim())) {
 			return "toUrl";
 		}
 		return "toHome";
@@ -112,9 +125,13 @@ public class UserAction extends BaseAction {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	
-	
-	
-	
+
+	public String getLoginFlag() {
+		return loginFlag;
+	}
+
+	public void setLoginFlag(String loginFlag) {
+		this.loginFlag = loginFlag;
+	}
 
 }

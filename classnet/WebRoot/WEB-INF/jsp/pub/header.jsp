@@ -20,7 +20,7 @@ else if(url.indexOf("masterAction_")!=-1){
 	index="master";
 } 
 if(index=="home"){
-	document.write('<li id="topTabOn"><a href="hoem"><span>网站首页</span></a></li>');
+	document.write('<li id="topTabOn"><a href="home"><span>网站首页</span></a></li>');
 }
 else{
 	document.write('<li><a href="home"><span>网站首页</span></a></li>');
