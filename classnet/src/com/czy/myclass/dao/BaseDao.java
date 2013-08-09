@@ -47,4 +47,6 @@ public interface BaseDao<T> {
 	 * @return
 	 */
 	public List<T> findAll();
+	
+	public int count();
 }

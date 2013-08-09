@@ -85,4 +85,12 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		return sessionFactory.getCurrentSession();
 	}
 
+	@Override
+	public int count() {
+		Long count = (Long) getSession().createQuery(//
+				"SELECT COUNT(*) FROM "+this.clazz.getSimpleName()+" ")//
+				.uniqueResult();
+		return count.intValue();
+	}
+
 }

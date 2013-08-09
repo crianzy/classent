@@ -2,7 +2,7 @@ package com.czy.myclass.service;
 
 import com.czy.myclass.domain.User;
 
-public interface UserService {
+public interface UserService extends BaseService{
 
 	/**
 	 * 检查验证更新

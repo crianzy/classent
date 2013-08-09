@@ -6,7 +6,7 @@ import com.czy.myclass.domain.Topic;
 import com.czy.myclass.domain.TopicMenu;
 import com.czy.myclass.dto.PageBean;
 
-public interface TopicService {
+public interface TopicService extends BaseService{
 
 	public List<TopicMenu> getAllTopicMenu();
 

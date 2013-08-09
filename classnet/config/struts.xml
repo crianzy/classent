@@ -10,7 +10,6 @@
 
 	<package name="default" namespace="/" extends="json-default">
 
-
 		<action name="redirectAction" class="redirectAction">
 			<result name="success">/WEB-INF/jsp/redirect.jsp</result>			
 		</action>
@@ -78,6 +77,10 @@
 			<result name="myTopicList">/WEB-INF/jsp/master/myTopicList.jsp</result>
 		</action>
 	</package>
-
+	<package name="admin" namespace="/admin" extends="json-default">
+		<action name="adminIndex" class="indexAction">
+			<result name="success">/WEB-INF/jsp/admin/index.jsp</result>
+		</action>
+	</package>
 	<!-- Add packages here -->
 </struts>

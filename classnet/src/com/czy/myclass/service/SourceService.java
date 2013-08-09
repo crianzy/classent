@@ -6,7 +6,7 @@ import com.czy.myclass.domain.Source;
 import com.czy.myclass.domain.SourceMenu;
 
 
-public interface SourceService {
+public interface SourceService extends BaseService{
 
 	public List<SourceMenu> getAllSource();
 

@@ -7,7 +7,7 @@ import com.czy.myclass.domain.ClazzMenu;
 import com.czy.myclass.domain.ClazzType;
 import com.czy.myclass.dto.ClazzMenuDto;
 
-public interface ClazzService {
+public interface ClazzService extends BaseService{
 	
 	public Clazz getClazzById(Long clazzId);
 	

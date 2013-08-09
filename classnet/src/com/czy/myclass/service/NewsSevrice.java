@@ -5,7 +5,7 @@ import java.util.List;
 import com.czy.myclass.domain.News;
 import com.czy.myclass.domain.NewsType;
 
-public interface NewsSevrice {
+public interface NewsSevrice extends BaseService{
 	
 	
 	public NewsType getNewsTypeById(Long newsTypeId);

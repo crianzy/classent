@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.czy.myclass.dao.ClazzDao;
 import com.czy.myclass.dao.ClazzMenuDao;
 import com.czy.myclass.dao.ClazzTypeDao;
+import com.czy.myclass.dao.UserDao;
 import com.czy.myclass.domain.Clazz;
 import com.czy.myclass.domain.ClazzMenu;
 import com.czy.myclass.domain.ClazzType;
