@@ -1,5 +1,6 @@
-#Thu Aug 08 17:50:45 CST 2013
+#Sat Aug 10 10:35:00 CST 2013
 eclipse.preferences.version=1
+encoding//WebRoot/WEB-INF/jsp/admin/user/userList.jsp=UTF-8
 encoding//WebRoot/WEB-INF/jsp/news/index.jsp=UTF-8
 encoding//WebRoot/WEB-INF/jsp/pub/page.jsp=UTF-8
 encoding//src/com/czy/myclass/action/UserAction.java=UTF-8

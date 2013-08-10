@@ -12,8 +12,8 @@
 		<property name="username" />
 		<property name="password" />
 		<property name="email"/>
-		<property name="enable"></property>
-		<property name="authorite"></property>
+		<property name="enable"/>
+		<property name="authorite"/>
 		
 		<set name="topics" lazy="false">
 			<key column="userId"></key>

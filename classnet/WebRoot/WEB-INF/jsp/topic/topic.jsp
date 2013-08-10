@@ -14,35 +14,7 @@
 				location="topicAction_topic?topicId="+${topicId}+"&currentPage="+num
 			}
 		</script>
-<style type="text/css">
-/* 分页 */
-.class_page_topic {
-	clear: left;
-	text-align: left;
-	color: #4C9DCE;
-}
 
-.class_page_topic ul,.class_page_topic li {
-	padding: 0px;
-	margin: 0px 0px 0px 10px;
-	text-align: left;
-	list-style: none;
-}
-
-.class_page_topic a,.class_page_topic strong {
-	display: inline-block;
-	border: 1px solid #D7E5F2;
-	line-height: 160%;
-	text-decoration: none;
-	padding: 0 5px;
-	color: #4C9DCE;
-}
-
-.class_page_topic strong {
-	background: #5384AF;
-	color: #fff;
-}
-</style>
 	</head>
 	<body>
 		<div class="wrap">
@@ -183,9 +155,7 @@
 									<tr >
 										<td></td>
 										<td align="right" width="80%" height="20">
-											<div class="class_page_topic" align="right"><span class="pagecss">
-												<jsp:include page="/WEB-INF/jsp/pub/page.jsp" ></jsp:include>
-									 		</span></div>
+											<jsp:include page="/WEB-INF/jsp/pub/page.jsp" ></jsp:include>
 										</td>
 									</tr>
 								</table>

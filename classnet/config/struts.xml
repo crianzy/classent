@@ -78,8 +78,13 @@
 		</action>
 	</package>
 	<package name="admin" namespace="/admin" extends="json-default">
-		<action name="adminIndex" class="indexAction">
+		<action name="index" class="indexAction">
 			<result name="success">/WEB-INF/jsp/admin/index.jsp</result>
+		</action>
+		<action name="userAdminAction_*" class="userAdminAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/admin/user/userList.jsp</result>
+			<result name="searchResult">/WEB-INF/jsp/admin/user/userList.jsp</result>
+			<result name="changeUserStatus" type="json"></result>
 		</action>
 	</package>
 	<!-- Add packages here -->

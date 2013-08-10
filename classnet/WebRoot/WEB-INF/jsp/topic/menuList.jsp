@@ -80,9 +80,7 @@
 								<table width="100%" border="0" cellpadding="0" cellspacing="0" style="border:1px solid #a8d7f1">
 								<tr>
 									<td align="left" width="70%" height="20">
-										<div class="class_page_topic"><span class="pagecss">
-											<jsp:include page="/WEB-INF/jsp/pub/page.jsp" ></jsp:include>
-								 		</span></div>
+										<jsp:include page="/WEB-INF/jsp/pub/page.jsp" ></jsp:include>
 									</td>
 									<td align="right" height="20">
 										<s:if test="#session.user!=null">
@@ -117,9 +115,7 @@
 								<table width="100%" border="0" cellpadding="0" cellspacing="0" style="border:1px solid #a8d7f1">
 								<tr>
 									<td align="left" width="70%" height="20">
-										<div class="class_page_topic"><span class="pagecss">
-											<jsp:include page="/WEB-INF/jsp/pub/page.jsp" ></jsp:include>
-								 		</span></div>
+										<jsp:include page="/WEB-INF/jsp/pub/page.jsp" ></jsp:include>
 									</td>
 									<td align="right" height="20">
 										<s:if test="#session.user!=null">

@@ -3,17 +3,11 @@
 <script type="text/javascript">
 document.write('<ul>');
 var url = document.URL;
-if(url.indexOf("userAction")!=-1){
-	document.write('<li class="bj"><a href="#">用户管理</a></li>');
+if(url.indexOf("userAdminAction")!=-1){
+	document.write('<li class="bj"><a href="admin/userAdminAction_list">用户管理</a></li>');
 }
 else{
-	document.write('<li><a href="">用户管理</a></li>');
-}
-if(url.indexOf("homeworkAction")!=-1){
-	document.write('<li class="bj"><a href="#">作业管理</a></li>');
-}
-else{
-	document.write('<li><a href="">作业管理</a></li>');
+	document.write('<li><a href="admin/userAdminAction_list">用户管理啊啊啊</a></li>');
 }
 document.write('</ul>');
 </script>

@@ -1,6 +1,9 @@
 package com.czy.myclass.service;
 
+import java.util.List;
+
 import com.czy.myclass.domain.User;
+import com.czy.myclass.dto.PageBean;
 
 public interface UserService extends BaseService{
 
@@ -26,4 +29,12 @@ public interface UserService extends BaseService{
 	 * @return
 	 */
 	public User regist(User model);
+
+	public List<User> getAllUserList();
+
+	public List<User> search(String key);
+
+	public PageBean getPageBean(int currentPage, String key);
+
+	public void chageUserStatus(Long id, boolean enable);
 }
