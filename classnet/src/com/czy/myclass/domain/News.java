@@ -13,7 +13,7 @@ public class News implements Serializable {
 	private String source;
 	private Date pubTime = new Date();
 	private String content;
-	private Integer viewNum;
+	private Integer viewNum = 0;
 	private String img;
 
 	/**

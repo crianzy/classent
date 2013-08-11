@@ -25,7 +25,7 @@ public class UserAdminAction extends BaseAdminAction {
 	}
 
 	public String changeUserStatus() {
-		userService.chageUserStatus(id,enable);
+		userService.chageUserStatus(id, enable);
 		flag = "1";
 		return "changeUserStatus";
 	}
@@ -68,6 +68,14 @@ public class UserAdminAction extends BaseAdminAction {
 
 	public void setFlag(String flag) {
 		this.flag = flag;
+	}
+
+	public boolean isEnable() {
+		return enable;
+	}
+
+	public void setEnable(boolean enable) {
+		this.enable = enable;
 	}
 
 }

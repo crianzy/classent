@@ -91,7 +91,7 @@
 										</td>
 										<td width="10%" height="30" bgcolor="#FFFFFF" align="center">
 										<s:if test="enable">
-											<a href="javascript: changeStatus( ${id } , false )">停用</a>&nbsp;
+											<a href="javascript: changeStatus( ${id } , false)">停用</a>&nbsp;
 	      									恢复
 	      								</s:if> <s:else>
 	      									停用&nbsp;

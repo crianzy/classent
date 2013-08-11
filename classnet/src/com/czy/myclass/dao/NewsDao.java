@@ -3,6 +3,7 @@ package com.czy.myclass.dao;
 import java.util.List;
 
 import com.czy.myclass.domain.News;
+import com.czy.myclass.dto.PageBean;
 
 
 public interface NewsDao extends BaseDao<News>{
@@ -22,4 +23,8 @@ public interface NewsDao extends BaseDao<News>{
 	public List<News> getTuijianNews(int n);
 
 	public List<News> getHotNews(int n);
+
+	public PageBean getPageBean(int currentPage);
+
+	public PageBean getPageBeanSearch(int currentPage, Long menuId, String key);
 }

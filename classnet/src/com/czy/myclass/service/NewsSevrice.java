@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.czy.myclass.domain.News;
 import com.czy.myclass.domain.NewsType;
+import com.czy.myclass.dto.NewsFormDto;
+import com.czy.myclass.dto.PageBean;
 
 public interface NewsSevrice extends BaseService{
 	
@@ -50,4 +52,24 @@ public interface NewsSevrice extends BaseService{
 	 * @return
 	 */
 	public List<News> getHotNews();
+
+	public void addMenu(String menuName);
+
+	public void delMenu(Long menuId);
+
+	public void delMenu(String menuIds);
+
+	public void updateMenu(Long menuId, String menuName);
+
+	public void saveNews(NewsFormDto newsDto);
+
+	public PageBean getnewsPageBean(int currentPage);
+
+	public PageBean getPageBeanSearch(int currentPage, Long menuId, String key);
+
+	public void delNews(Long newsId);
+
+	public void delNews(String newsIds);
+
+	public void chanegNewsStatus(Long newsId, int status);
 }

@@ -13,7 +13,7 @@
 		<property name="author" />
 		<property name="source"/>
 		<property name="pubTime"/>
-		<property name="content"/>
+		<property name="content" type="text"/>
 		<property name="viewNum"/>
 		<property name="img"/>
 		<property name="status"/>

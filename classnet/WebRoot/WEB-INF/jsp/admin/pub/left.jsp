@@ -7,7 +7,7 @@ if(url.indexOf("userAdminAction")!=-1){
 	document.write('<li class="bj"><a href="admin/userAdminAction_list">用户管理</a></li>');
 }
 else{
-	document.write('<li><a href="admin/userAdminAction_list">用户管理啊啊啊</a></li>');
+	document.write('<li><a href="admin/userAdminAction_list">用户管理</a></li>');
 }
 document.write('</ul>');
 </script>

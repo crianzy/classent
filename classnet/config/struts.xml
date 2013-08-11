@@ -86,6 +86,19 @@
 			<result name="searchResult">/WEB-INF/jsp/admin/user/userList.jsp</result>
 			<result name="changeUserStatus" type="json"></result>
 		</action>
+		<action name="newsAdminAction_*" class="newsAdminAction" method="{1}">
+			<result name="newsMenuManage">/WEB-INF/jsp/admin/news/newsMenuManage.jsp</result>
+			<result name="toNewsMenuManage" type="redirectAction">newsAdminAction_newsMenuManage</result>
+			<result name="json" type="json"></result>
+			<result name="newsManage">/WEB-INF/jsp/admin/news/newsManage.jsp</result>
+			<result name="toNewsManage" type="redirectAction"> newsAdminAction_newsManage</result>
+		</action>
+		<action name="newsEidtAction_*" class="newsEidtAction" method="{1}">
+			<result name="editUI">/WEB-INF/jsp/admin/news/pubNews.jsp</result>
+			<result name="toNewsManage" type="redirectAction">newsAdminAction_newsManage</result>
+			<result name="toNewsMenuManage" type="redirectAction">newsAdminAction_newsMenuManage</result>
+		</action>
+		
 	</package>
 	<!-- Add packages here -->
 </struts>

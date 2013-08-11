@@ -37,14 +37,15 @@ public class ClazzDaoImpl extends BaseDaoImpl<Clazz> implements ClazzDao {
 		if (keyWord != null && !"".equals(keyWord.trim())) {
 			hql = hql + " AND clazz.name LIKE '%"+ keyWord +"%' ";
 		}
-		System.out.println(hql);
+		//System.out.println(hql);
 
 		List<Clazz> clazzList = getSession()
 				.createQuery(hql)
 				.list();
-		for (Clazz clazz : clazzList) {
-			System.out.println(clazz.getId() + "-------" + clazz.getName());
-		}
+		/*
+		 * for (Clazz clazz : clazzList) { System.out.println(clazz.getId() +
+		 * "-------" + clazz.getName()); }
+		 */
 
 		return clazzList;
 	}

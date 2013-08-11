@@ -14,32 +14,32 @@
 				</s:else>
 
 				<s:if test="m=='news'">
-					<li class="bj">新闻</li>
+					<li class="bj"><a href="admin/index?m=news">新闻</a></li>
 				</s:if>
 				<s:else>
-					<li><a href="">新闻</a>
+					<li><a href="admin/index?m=news">新闻</a>
 					</li>
 				</s:else>
 
 				<s:if test="m == 'clazz' ">
-					<li class="bj">课程中心</li>
+					<li class="bj"><a href="admin/index?m=clazz">课程中心</li>
 				</s:if>
 				<s:else>
-					<li><a href="">课程中心</a>
+					<li><a href="admin/index?m=clazz">课程中心</a>
 					</li>
 				</s:else>
 				<s:if test="m == 'source' ">
-					<li class="bj">资源下载</li>
+					<li class="bj"><a href="admin/index?m=source">资源下载</a></li>
 				</s:if>
 				<s:else>
-					<li><a href="">资源下载</a>
+					<li><a href="admin/index?m=source">资源下载</a>
 					</li>
 				</s:else>
 				<s:if test="m == 'topic' ">
-					<li class="bj">互动交流</li>
+					<li class="bj"><a href="admin/index?m=topic">互动交流</a></li>
 				</s:if>
 				<s:else>
-					<li><a href="">互动交流</a>
+					<li><a href="admin/index?m=topic">互动交流</a>
 					</li>
 				</s:else>
 			</s:if>
@@ -50,22 +50,22 @@
 					if (url.indexOf("newsAction") != -1) {
 						document.write('<li class="bj">新闻</li>');
 					} else {
-						document.write('<li><a href="">新闻</a></li>');
+						document.write('<li><a href="admin/index?m=news">新闻</a></li>');
 					}
 					if (url.indexOf("clazzAction") != -1) {
 						document.write('<li class="bj">课程中心</li>');
 					} else {
-						document.write('<li><a href="">课程中心</a></li>');
+						document.write('<li><a href="admin/index?m=clazz">课程中心</a></li>');
 					}
 					if (url.indexOf("sourceAction") != -1) {
 						document.write('<li class="bj">资源下载</li>');
 					} else {
-						document.write('<li><a href="">资源下载</a></li>');
+						document.write('<li><a href="admin/index?m=source">资源下载</a></li>');
 					}
 					if (url.indexOf("topicAction") != -1) {
 						document.write('<li class="bj">互动交流</li>');
 					} else {
-						document.write('<li><a href="">互动交流</a></li>');
+						document.write('<li><a href="admin/index?m=topic">互动交流</a></li>');
 					}
 				</script>
 			</s:else>
