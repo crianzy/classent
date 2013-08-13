@@ -125,7 +125,7 @@ public class ClazzAction extends BaseAction {
 		Clazz clazz = clazzService.getClazzById(clazzId);
 		this.filename = clazz.getFilename();
 		this.fileContentType = clazz.getFielContentType();
-		this.inputPath = "/file/clazz/"+this.filename;
+		this.inputPath = "/file/clazz/clazz/"+this.filename;
 		System.out.println(inputPath);
 		return "download";
 	}

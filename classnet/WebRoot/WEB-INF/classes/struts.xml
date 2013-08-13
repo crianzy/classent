@@ -98,6 +98,19 @@
 			<result name="toNewsManage" type="redirectAction">newsAdminAction_newsManage</result>
 			<result name="toNewsMenuManage" type="redirectAction">newsAdminAction_newsMenuManage</result>
 		</action>
+		<action name="clazzAdminAction_*" class="clazzAdminAction" method="{1}">
+			<result name="clazzMenuList">/WEB-INF/jsp/admin/clazz/menuList.jsp</result>
+			<result name="toClazzMenuList" type="redirectAction">clazzAdminAction_clazzMenuList?parentId=${parentId }</result>
+			<result name="json" type="json"></result>
+			<result name="clazzTypeList">/WEB-INF/jsp/admin/clazz/typeList.jsp</result>
+			<result name="toClazzTypeList" type="redirectAction">clazzAdminAction_clazzTypeList </result>
+			<result name="clazzList">/WEB-INF/jsp/admin/clazz/clazzList.jsp</result>
+			<result name="toClazzList" type="redirectAction">clazzAdminAction_clazzList</result>
+		</action>
+		<action name="clazzEditAction_*" class="clazzEditAction" method="{1}">
+			<result name="editUI">/WEB-INF/jsp/admin/clazz/addClazz.jsp</result>
+			<result name="toClazzList" type="redirectAction">clazzAdminAction_clazzList</result>
+		</action>
 		
 	</package>
 	<!-- Add packages here -->

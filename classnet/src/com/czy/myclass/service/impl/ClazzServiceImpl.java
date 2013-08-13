@@ -69,7 +69,6 @@ public class ClazzServiceImpl implements ClazzService {
 		return clazzList;
 	}
 
-
 	@Override
 	public ClazzType getClazzTypeById(Long clazzTypeId) {
 		ClazzType clazzType = clazzTypeDao.getById(clazzTypeId);
@@ -80,7 +79,7 @@ public class ClazzServiceImpl implements ClazzService {
 	public Clazz getClazzById(Long clazzId) {
 		Clazz clazz = clazzDao.getById(clazzId);
 		// 点击数据的 增加 有待改进
-		clazz.setViewNum(clazz.getViewNum()+1);
+		clazz.setViewNum(clazz.getViewNum() + 1);
 		clazzDao.updata(clazz);
 		return clazz;
 	}
@@ -94,7 +93,8 @@ public class ClazzServiceImpl implements ClazzService {
 	@Override
 	public List<Clazz> searchClazz(Long pmenuId, Long menuId, Long clazzTypeId,
 			String keyWord) {
-		List<Clazz> clazzList = clazzDao.search(pmenuId, menuId, clazzTypeId, keyWord);
+		List<Clazz> clazzList = clazzDao.search(pmenuId, menuId, clazzTypeId,
+				keyWord);
 		return clazzList;
 	}
 
@@ -103,5 +103,105 @@ public class ClazzServiceImpl implements ClazzService {
 		List<Clazz> clazzList = clazzDao.getTuiJianList(n);
 		return clazzList;
 	}
+
+	@Override
+	public void addClazzMenu(String clazzMenuName, Long parentId) {
+		ClazzMenu clazzMenu = new ClazzMenu();
+		clazzMenu.setName(clazzMenuName);
+		if (parentId != null) {
+			ClazzMenu parent = clazzMenuDao.getById(parentId);
+			clazzMenu.setParentClassMenu(parent);
+		}
+		clazzMenuDao.save(clazzMenu);
+	}
+
+	@Override
+	public void editClazzMenu(Long clazzMenuId, String clazzMenuName) {
+		ClazzMenu clazzMenu = clazzMenuDao.getById(clazzMenuId);
+		clazzMenu.setName(clazzMenuName);
+		clazzMenuDao.updata(clazzMenu);
+	}
+
+	@Override
+	public void delClazzMenu(Long clazzMenuId) {
+		clazzMenuDao.delete(clazzMenuId);
+	}
+
+	@Override
+	public void delClazzMenu(String menuids) {
+		String[] ids = menuids.split(",");
+		for (String idstr : ids) {
+			Long id = Long.parseLong(idstr);
+			clazzMenuDao.delete(id);
+		}
+	}
+
+	@Override
+	public void addClazzType(String clazzTypeName) {
+		ClazzType clazzType = new ClazzType();
+		clazzType.setName(clazzTypeName);
+		clazzTypeDao.save(clazzType);
+	}
+
+	@Override
+	public void editClazzType(Long clazzTypeId, String clazzTypeName) {
+		ClazzType clazzType = clazzTypeDao.getById(clazzTypeId);
+		clazzType.setName(clazzTypeName);
+		clazzTypeDao.updata(clazzType);
+	}
+
+	@Override
+	public void delClazzType(Long clazzTypeId) {
+		clazzTypeDao.delete(clazzTypeId);
+	}
+
+	@Override
+	public void delClazzType(String clazzTypeIds) {
+		String[] ids = clazzTypeIds.split(",");
+		for (String idstr : ids) {
+			Long id = Long.parseLong(idstr);
+			clazzTypeDao.delete(id);
+		}
+	}
+
+	@Override
+	public void addClazz(Clazz clazz, Long clazzMenuId, Long clazzTypeId) {
+		ClazzMenu clazzMenu = clazzMenuDao.getById(clazzMenuId);
+		ClazzType clazzType = clazzTypeDao.getById(clazzTypeId);
+		clazz.setFileType(clazzType);
+		clazz.setClazzMenu(clazzMenu);
+		clazzDao.save(clazz);
+	}
+
+	@Override
+	public void updataClazz(Clazz clazz, Long clazzMenuId, Long clazzTypeId) {
+		ClazzMenu clazzMenu = clazzMenuDao.getById(clazzMenuId);
+		ClazzType clazzType = clazzTypeDao.getById(clazzTypeId);
+		clazz.setFileType(clazzType);
+		clazz.setClazzMenu(clazzMenu);
+		clazzDao.updata(clazz);
+	}
+
+	@Override
+	public void changeClazzStatus(Long clazzId, int status) {
+		Clazz clazz  = clazzDao.getById(clazzId);
+		clazz.setStatus(status);
+		clazzDao.updata(clazz);
+	}
+
+	@Override
+	public void delClazz(String clazzIds) {
+		String[] ids = clazzIds.split(",");
+		for (String idstr : ids) {
+			Long id = Long.parseLong(idstr);
+			clazzDao.delete(id);
+		}
+	}
+
+	@Override
+	public void delClazz(Long clazzId) {
+		clazzDao.delete(clazzId);
+	}
+
 
 }

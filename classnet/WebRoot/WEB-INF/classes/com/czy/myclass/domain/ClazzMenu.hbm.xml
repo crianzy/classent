@@ -18,7 +18,7 @@
 		
 		<many-to-one name="parentClassMenu" column="parentId" lazy="false"></many-to-one>
 		
-		<set name="clazzs" lazy="false">
+		<set name="clazzs" lazy="false" cascade="delete" >
 			<key column="clazzMenuId"></key>
 			<one-to-many class="Clazz"/>
 		</set>
