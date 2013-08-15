@@ -11,7 +11,7 @@
 		</id>
 		<property name="name" />
 		<set name="sources" lazy="false" order-by="pubTime DESC">
-			<key column="sourceMenuId"></key>
+			<key column="sourceMenuId" ></key>
 			<one-to-many class="Source" />
 		</set>
 

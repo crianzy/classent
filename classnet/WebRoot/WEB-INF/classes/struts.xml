@@ -112,6 +112,18 @@
 			<result name="toClazzList" type="redirectAction">clazzAdminAction_clazzList</result>
 		</action>
 		
+		<action name="sourceAdminAction_*" class="sourceAdminAction" method="{1}">
+			<result name="menuList">/WEB-INF/jsp/admin/source/sourceMenuList.jsp</result>
+			<result name="toMenuList" type="redirectAction">sourceAdminAction_menuList</result>
+			<result name="json" type="json" ></result>
+			<result name="sourceList">/WEB-INF/jsp/admin/source/sourceList.jsp</result>
+			<result name="toSourceList" type="redirectAction">sourceAdminAction_sourceList</result>
+		</action>
+		<action name="sourceEditAction_*" class="sourceEditAction" method="{1}">
+			<result name="editUI">/WEB-INF/jsp/admin/source/addSource.jsp</result>
+			<result name="toSourceList" type="redirectAction">sourceAdminAction_sourceList</result>
+		</action>
+		
 	</package>
 	<!-- Add packages here -->
 </struts>

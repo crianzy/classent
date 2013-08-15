@@ -5,10 +5,9 @@ import java.util.List;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.czy.myclass.dao.ClazzMenuDao;
-import com.czy.myclass.domain.Clazz;
 import com.czy.myclass.domain.ClazzType;
 import com.czy.myclass.dto.ClazzMenuDto;
+import com.czy.myclass.dto.PageBean;
 import com.opensymphony.xwork2.ActionContext;
 
 @Controller
@@ -25,7 +24,9 @@ public class ClazzAdminAction extends BaseAdminAction {
 	private String clazzTypeName;
 	private String key;
 	private Long clazzId;
-	private int status; 
+	private int status;
+	private int currentPage = 1;
+
 	public String clazzMenuList() {
 		List<ClazzMenuDto> clazzMenuDtoList = null;
 		List<ClazzMenuDto> parentMenuList = clazzService.getFirstClazzMenu();
@@ -89,30 +90,31 @@ public class ClazzAdminAction extends BaseAdminAction {
 		}
 		return "toClazzTypeList";
 	}
-	//------------------------------------------------------------
-	
-	public String clazzList(){
+
+	// ------------------------------------------------------------
+
+	public String clazzList() {
 		List<ClazzType> clazzTypeList = clazzService.getAllFileType();
 		ActionContext.getContext().put("clazzTypeList", clazzTypeList);
 		List<ClazzMenuDto> parentMenuList = clazzService.getFirstClazzMenu();
 		ActionContext.getContext().put("parentMenuList", parentMenuList);
-		List<Clazz> clazzList = clazzService.searchClazz(parentId, clazzMenuId, clazzTypeId, key);
-		if(parentId!=null){
-			List<ClazzMenuDto> childMenuList = clazzService.getSecondClazzMenu(parentId);
+		PageBean pageBean = clazzService.getClazzPageBean(parentId, clazzMenuId, clazzTypeId, key ,currentPage);
+		if (parentId != null) {
+			List<ClazzMenuDto> childMenuList = clazzService
+					.getSecondClazzMenu(parentId);
 			ActionContext.getContext().put("childMenuList", childMenuList);
 		}
-		ActionContext.getContext().put("clazzList", clazzList);
+		ActionContext.getContext().getValueStack().push(pageBean);
 		return "clazzList";
 	}
-	
-	
-	public String changeClazzStatus(){
-		clazzService.changeClazzStatus(clazzId,status);
+
+	public String changeClazzStatus() {
+		clazzService.changeClazzStatus(clazzId, status);
 		flag = "1";
 		return "json";
 	}
-	
-	public String delClazz(){
+
+	public String delClazz() {
 		if (clazzId != null) {
 			clazzService.delClazz(clazzId);
 		}
@@ -129,6 +131,14 @@ public class ClazzAdminAction extends BaseAdminAction {
 
 	public void setM(String m) {
 		this.m = m;
+	}
+
+	public int getCurrentPage() {
+		return currentPage;
+	}
+
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
 	}
 
 	public Long getParentId() {

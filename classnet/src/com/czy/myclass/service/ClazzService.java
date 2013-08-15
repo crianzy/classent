@@ -6,6 +6,7 @@ import com.czy.myclass.domain.Clazz;
 import com.czy.myclass.domain.ClazzMenu;
 import com.czy.myclass.domain.ClazzType;
 import com.czy.myclass.dto.ClazzMenuDto;
+import com.czy.myclass.dto.PageBean;
 
 public interface ClazzService extends BaseService {
 
@@ -92,5 +93,8 @@ public interface ClazzService extends BaseService {
 	public void delClazz(String ids);
 
 	public void delClazz(Long clazzId);
+
+	public PageBean getClazzPageBean(Long parentId, Long clazzMenuId,
+			Long clazzTypeId, String key, int currentPage);
 
 }

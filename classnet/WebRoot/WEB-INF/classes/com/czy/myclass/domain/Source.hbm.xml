@@ -15,7 +15,7 @@
 		<property name="filename" />
 		<property name="fileContentType"/>
 		<many-to-one name="sourceMenu" column="sourceMenuId"
-			class="SourceMenu"></many-to-one>
+			class="SourceMenu" lazy="false"></many-to-one>
 	</class>
 
 </hibernate-mapping>

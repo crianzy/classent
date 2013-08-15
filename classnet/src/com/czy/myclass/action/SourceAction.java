@@ -62,7 +62,7 @@ public class SourceAction extends BaseAction{
 		Source source = sourceService.getSource(sourceId);
 		this.filename = source.getFilename();
 		this.fileContentType = source.getFileContentType();
-		this.inputPath = "/file/source/"+this.filename;
+		this.inputPath = "/"+this.filename;
 		return "download";
 	}
 

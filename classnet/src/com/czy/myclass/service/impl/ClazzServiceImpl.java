@@ -14,6 +14,7 @@ import com.czy.myclass.domain.Clazz;
 import com.czy.myclass.domain.ClazzMenu;
 import com.czy.myclass.domain.ClazzType;
 import com.czy.myclass.dto.ClazzMenuDto;
+import com.czy.myclass.dto.PageBean;
 import com.czy.myclass.service.ClazzService;
 
 @Service
@@ -184,7 +185,7 @@ public class ClazzServiceImpl implements ClazzService {
 
 	@Override
 	public void changeClazzStatus(Long clazzId, int status) {
-		Clazz clazz  = clazzDao.getById(clazzId);
+		Clazz clazz = clazzDao.getById(clazzId);
 		clazz.setStatus(status);
 		clazzDao.updata(clazz);
 	}
@@ -203,5 +204,11 @@ public class ClazzServiceImpl implements ClazzService {
 		clazzDao.delete(clazzId);
 	}
 
+	@Override
+	public PageBean getClazzPageBean(Long parentId, Long clazzMenuId,
+			Long clazzTypeId, String key , int currentPage) {
+		return clazzDao.getClazzPageBean(parentId, clazzMenuId, clazzTypeId,
+				key,currentPage);
+	}
 
 }

@@ -98,6 +98,7 @@ function changeselect(){
 	}
 	location=url;
 }
+
 </script>
 </head>
 
@@ -148,8 +149,8 @@ function changeselect(){
 	      <td width="10%" height="30" bgcolor="#e5edfa" align="center"></td>
 	      <td width="20%" height="30" bgcolor="#e5edfa" align="center">操作选项</td>
 	    </tr>
-		<s:if test="#clazzList!=null">
-		<s:iterator value="clazzList" status="vs">
+		<s:if test="list!=null">
+		<s:iterator value="list" status="vs">
 		<tr>
 	      <td height="30" bgcolor="#FFFFFF" align="center">
 	        <input type="checkbox" name="clazzId" value="${id}"/> 
@@ -178,7 +179,28 @@ function changeselect(){
 	  </table>
 	  <p><input type="checkbox" onclick="selectAll(this)"/> 全选 
 	  <input type="button" value="删除" class="shanchu" onclick="del(0)"/></p>
-	  <!-- <jsp:include page="/WEB-INF/jsp/pub/page.jsp"></jsp:include> -->
+	  <jsp:include page="/WEB-INF/jsp/pub/page.jsp"></jsp:include>
+	  <script type="text/javascript">
+			function gotoPage(num){
+				var url = "admin/clazzAdminAction_clazzList?currentPage="+num;
+				var key = $("#key").val();
+				var menuId = $("#menuId").val();
+				var parentMenuId = $("#parentMenuId").val();
+				if(key!=""){
+					url+="&key="+key;
+				}
+				if(parentMenuId!=0){
+					url+="&parentId="+parentMenuId;
+				}
+				if(menuId&&menuId!=0){
+					url+="&clazzMenuId="+menuId;
+				}
+				if($("#fileTypeId").val()!=0){
+					url+='&clazzTypeId='+$("#fileTypeId").val();
+				}
+				location = url;
+			}
+	  </script>
 	</div>
 	<br />
 	<br />
