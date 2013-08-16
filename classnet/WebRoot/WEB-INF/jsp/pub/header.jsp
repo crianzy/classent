@@ -16,7 +16,7 @@ else if(url.indexOf("sourceAction_")!=-1){
 else if(url.indexOf("topicAction_")!=-1){
 	index="topic";
 } 
-else if(url.indexOf("masterAction_")!=-1){
+else if(url.indexOf("master/masterAction_")!=-1){
 	index="master";
 } 
 if(index=="home"){
@@ -50,10 +50,10 @@ else{
 	document.write('<li><a href="topicAction_index"><span>互动交流</span></a></li>');
 }
 if(index=="master"){
-	document.write('<li id="topTabOn"><a href="masterAction_index"><span>个人中心</span></a></li>');
+	document.write('<li id="topTabOn"><a href="master/masterAction_index"><span>个人中心</span></a></li>');
 }
 else{
-	document.write('<li><a href="masterAction_index"><span>个人中心</span></a></li>');
+	document.write('<li><a href="master/masterAction_index"><span>个人中心</span></a></li>');
 }
 </script>
 </ul>

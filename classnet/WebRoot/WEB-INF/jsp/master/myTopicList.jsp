@@ -1,15 +1,22 @@
 <%@ page language="java" pageEncoding="utf-8"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="UTF-8">
 	<head>
+		<base href="<%=basePath%>">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link href="css/default.css" rel="stylesheet" type="text/css" />
 		<link href="css/user.css" rel="stylesheet" type="text/css" />
 		<title>会员中心--互动交流</title>
 		<script type="text/javascript">
 			function changeMenu(menuId){
-				location="masterAction_myTopicList?topicMenuId="+menuId;
+				location="master/masterAction_myTopicList?topicMenuId="+menuId;
 			}
 		</script>
 	</head>
@@ -28,7 +35,7 @@
 								您现在的位置：
 								<a href="home">精品课程网
 								</a>&gt;&gt;
-								<a href="masterAction_index">会员中心</a>
+								<a href="master/masterAction_index">会员中心</a>
 							</div>
 							<div class="c_spacing"></div>
 							<div class="u_form1">

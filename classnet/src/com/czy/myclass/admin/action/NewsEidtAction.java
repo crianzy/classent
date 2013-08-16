@@ -35,7 +35,7 @@ public class NewsEidtAction extends BaseAdminAction implements
 	public String pubNewsUI() {
 		List<NewsType> newsTypeList = newsService.getAllNewTypeList();
 		ActionContext.getContext().put("newsTypeList", newsTypeList);
-		if(newsDto.getId()!=null){
+		if (newsDto.getId() != null) {
 			News news = newsService.getNewsById(newsDto.getId());
 			ActionContext.getContext().put("news", news);
 		}
@@ -43,7 +43,7 @@ public class NewsEidtAction extends BaseAdminAction implements
 	}
 
 	public String save() {
-		if(imgFile!=null){
+		if (imgFile != null) {
 			this.imgFileFileName = new Date().getTime() + this.imgFileFileName;
 			File imageFile = new File(ServletActionContext.getServletContext()
 					.getRealPath("/file/news") + "/" + this.imgFileFileName);
@@ -117,7 +117,5 @@ public class NewsEidtAction extends BaseAdminAction implements
 	public void setNewsDto(NewsFormDto newsDto) {
 		this.newsDto = newsDto;
 	}
-	
-	
 
 }

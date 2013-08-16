@@ -28,15 +28,19 @@ function check(form){
 		alert("标题不能为空");
 		return false;
 	}
-	<c:if test="${empty clazzEntity}">
+	<s:if test="#source == null">
 	if(form.file.value==""){
 		alert("上传的资源文件不能为空");
 		return false;
+	}else{
+		var strFileName=form.file.value;
+		var extend = /\.[^\.]+$/.exec(strFileName);
+		if(!(extend==".txt"||extend==".doc"||extend==".docx"||extend==".docx"||extend==".ppt"||extend==".pptx"||extend==".xls"||extend==".rar"||extend==".zip")){
+			alert("请上传txt、doc、xls、ppt、txt、rar、zip格式的文件");
+			return false;
+		}
 	}
-	</c:if>
-	<c:if test="${not empty clazzEntity}">
-		form.action=" ";
-	</c:if>
+	</s:if>
 	return true;
 }
 </script>
@@ -92,7 +96,7 @@ function check(form){
 	<td width="15%" height="28" align="right" bgcolor="#edf1f7"><span>*</span>上传文件：</td>
 	<td height="28" bgcolor="#FFFFFF">
 		<input type="file" name=sourceFile id="file" />
-		<p>请上传资源文件,只能为<span style="color:red">doc、xls、ppt、txt、rar、zip</span>格式</p>
+		<p>请上传资源文件,只能为<span style="color:red">txt、doc、xls、ppt、txt、rar、zip</span>格式</p>
 	</td>
 	</tr>
 	</table>

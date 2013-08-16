@@ -33,8 +33,10 @@
 								<li>欢迎您:</li>
 								<li style="padding-left:20px;">${user.username }</li>
 								<li style="text-align:center">
-								<a href="#">进入后台管理</a> &nbsp;&nbsp;|&nbsp;&nbsp;
-								<a href="masterAction_index">进入用户中心</a>
+								<s:if test="#session.user.getAuthorite() == 'ROLE_SUPERVISOR' ">
+									<a href="admin/index">进入后台管理</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+								</s:if>
+								<a href="master/masterAction_index">进入用户中心</a>
 								&nbsp;&nbsp;|&nbsp;&nbsp; <a href="userAction_logout">退出登录</a>
 								</li>
 							</s:if>

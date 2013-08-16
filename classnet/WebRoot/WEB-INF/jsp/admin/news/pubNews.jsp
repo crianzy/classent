@@ -34,6 +34,14 @@
 			alert("作者不能为空");
 			return false;
 		}
+		if(form.imgFile.value!=""){
+			var strFileName=form.imgFile.value;
+			var extend = /\.[^\.]+$/.exec(strFileName);
+			if(!(extend==".jpg"||extend==".gif"||extend==".png")){
+				alert("请上传jpg 或gif 或png 格式的图片");
+				return false;
+			}
+		}
 		return true;
 	}
 </script>
@@ -77,7 +85,7 @@
 	</tr>
 	<tr>
 	<td width="15%" height="28" align="right" bgcolor="#edf1f7"><span>*</span>标题：</td>
-	<td height="28" bgcolor="#FFFFFF"><input type="text" name="title" id="title" size="60" value="${news.title}" maxlength="25"/><p>请输入新闻标题</p></td>
+	<td height="28" bgcolor="#FFFFFF"><input type="text" name="title" id="title" size="60" value="${news.title}" maxlength="80"/><p>请输入新闻标题</p></td>
 	</tr>
 	<tr>
 	<td width="15%" height="28" align="right" bgcolor="#edf1f7"><span>*</span>作者：</td>
@@ -91,7 +99,7 @@
 	<td width="15%" height="28" align="right" bgcolor="#edf1f7">封面图片：</td>
 	<td height="28" bgcolor="#FFFFFF">
 		<input type="file" name="imgFile" id="imgFile"/>
-		<p>请上传新闻的封面图片,只能为jpg,gif格式的图片</p></td>
+		<p>请上传新闻的封面图片,只能为jpg,gif,png格式的图片</p></td>
 	</tr>
 	<tr>
 	<td width="15%" height="28" align="right" bgcolor="#edf1f7"><span>*</span>新闻内容：</td>

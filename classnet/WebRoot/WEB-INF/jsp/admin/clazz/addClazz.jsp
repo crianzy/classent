@@ -31,18 +31,40 @@ function check(form){
 		alert("作者不能为空");
 		return false;
 	}
-	if(form.filetypeId.value==0){
+	if(form.clazzTypeId.value==0){
 		alert("文件类型不能为空");
 		return false;
+	}
+	if(form.imgFile.value!=""){
+		var strFileName=form.imgFile.value;
+		var extend = /\.[^\.]+$/.exec(strFileName);
+		if(!(extend==".jpg"||extend==".gif"||extend==".png")){
+			alert("请上传jpg 或gif 或png 格式的图片");
+			return false;
+		}
 	}
 	<s:if test="#clazzt == null">
 	if(trim(form.file.value)==""){
 		alert("课程文件不能为空");
 		return false;
+	}else{
+		var strFileName=form.file.value;
+		var extend = /\.[^\.]+$/.exec(strFileName);
+		if(!(extend==".txt"||extend==".doc"||extend==".docx"||extend==".docx"||extend==".ppt"||extend==".pptx"||extend==".xls")){
+			alert("请上传doc,xls,ppt,txt格式的文件");
+			return false;
+		}
 	}
 	if(trim(form.flashFile.value)==""){
 		alert("FLASH文件不能为空");
 		return false;
+	}else{
+		var strFileName=form.flashFile.value;
+		var extend = /\.[^\.]+$/.exec(strFileName);
+		if(extend!=".flv"){
+			alert("请上传flv格式的视频");
+			return false;
+		}
 	}
 	</s:if>
 	return true;
@@ -140,7 +162,7 @@ function changeMenu(pid){
 							<td width="15%" height="28" align="right" bgcolor="#edf1f7">封面图片：</td>
 							<td height="28" bgcolor="#FFFFFF"><input type="file"
 								name="imgFile" id="imgFile" />
-								<p>请上传封面图片,只能为jpg,gif格式的图片</p>
+								<p>请上传封面图片,只能为jpg,gif,png格式的图片</p>
 							</td>
 						</tr>
 						<tr>

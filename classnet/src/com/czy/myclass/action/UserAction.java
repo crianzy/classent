@@ -47,7 +47,9 @@ public class UserAction extends BaseAction {
 		if (user == null) {
 			// TODO 此处登录错误信息 存在 session中 有待改进
 			ActionContext.getContext().getSession().put("errorMsg", "用户名或密码错误");
-		} else {
+		} else if(!user.isEnable()){
+			ActionContext.getContext().getSession().put("errorMsg","你的账号存在异常，请与管理员联系");
+		}else{
 			ActionContext.getContext().getSession().remove("errorMsg");
 			ActionContext.getContext().getSession().put("user", user);
 		}
