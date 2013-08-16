@@ -72,4 +72,8 @@ public interface NewsSevrice extends BaseService{
 	public void delNews(String newsIds);
 
 	public void chanegNewsStatus(Long newsId, int status);
+	
+	public List<News> getTouTiaoNews();
+
+	public News getBigPicNews();
 }

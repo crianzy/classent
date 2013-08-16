@@ -3,17 +3,17 @@
 <script type="text/javascript">
 document.write("<ul>");
 var url = document.URL;
-if(url.indexOf("topicMenuManage")!=-1){
-	document.write('<li class="bj"><a href="">分类管理</a></li>');
+if(url.indexOf("menuList")!=-1){
+	document.write('<li class="bj"><a href="admin/topicAdminAction_menuList">分类管理</a></li>');
 }
 else{
-	document.write('<li><a href="">分类管理</a></li>');
+	document.write('<li><a href="admin/topicAdminAction_menuList">分类管理</a></li>');
 }
-if(url.indexOf("topic.do")!=-1){
-	document.write('<li class="bj"><a href="">帖子管理</a></li>');
+if(url.indexOf("topicList")!=-1){
+	document.write('<li class="bj"><a href="admin/topicAdminAction_topicList">帖子管理</a></li>');
 }
 else{
-	document.write('<li><a href="">帖子管理</a></li>');
+	document.write('<li><a href="admin/topicAdminAction_topicList">帖子管理</a></li>');
 }
 document.write("</ul>");
 </script>

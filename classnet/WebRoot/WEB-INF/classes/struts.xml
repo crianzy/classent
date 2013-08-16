@@ -7,6 +7,7 @@
 
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 	<constant name="struts.devMode" value="false" />
+	<constant name="struts.multipart.maxSize" value="1000000000" />
 
 	<package name="default" namespace="/" extends="json-default">
 
@@ -122,6 +123,13 @@
 		<action name="sourceEditAction_*" class="sourceEditAction" method="{1}">
 			<result name="editUI">/WEB-INF/jsp/admin/source/addSource.jsp</result>
 			<result name="toSourceList" type="redirectAction">sourceAdminAction_sourceList</result>
+		</action>
+		<action name="topicAdminAction_*" class="topicAdminAction" method="{1}">
+			<result name="menuList">/WEB-INF/jsp/admin/topic/topicMenuList.jsp</result>
+			<result name="toMenuList" type="redirectAction"> topicAdminAction_menuList</result>
+			<result name="topicList">/WEB-INF/jsp/admin/topic/topicList.jsp</result>
+			<result name="toTopicList" type="redirectAction">topicAdminAction_topicList</result>
+			<result name="json" type="json"></result>
 		</action>
 		
 	</package>

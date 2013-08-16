@@ -9,7 +9,7 @@ if(url.indexOf("newsMenuManage")!=-1){
 else{
 	document.write('<li><a href="admin/newsAdminAction_newsMenuManage">新闻目录管理</a></li>');
 }
-if(url.indexOf("pubnews")!=-1){
+if(url.indexOf("pubNewsUI")!=-1){
 	document.write('<li class="bj"><a href="admin/newsEidtAction_pubNewsUI">发布新闻</a></li>');
 }
 else{

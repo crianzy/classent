@@ -37,13 +37,15 @@
 						<!-- 网站位置导航信息结束 -->
 						<div class="c_spacing"></div>
 						<div id="column1">
-							<div
-								style="width:300px;height: 240px;float:right;text-align:center">
-								flash</div>
+							<div style="width:300px;height: 240px;float:right;text-align:center">
+								<a href="newsAction_readNews?newsId=${bigPicnews.id }" target="_blank">
+									<img src="file/news/${bigPicnews.img }" alt="${bigPicnews.title }" width="300px"  height="240px"/>
+								</a>
+							</div>
 							<div class="newsList">
 								<h3>校园新闻</h3>
 								<ul class="listStyle1">
-									<s:iterator value="#tuijianNewsList">
+									<s:iterator value="#touTiaoNewsList">
 										<li><a target="_blank" href="newsAction_readNews?newsId=${id }">${title } </a><s:date name="pubTime" format="MM-dd"/> </li>
 									</s:iterator>
 								</ul>

@@ -121,5 +121,59 @@ public class TopicServiceImpl implements TopicService {
 		return pageBean;
 	}
 
+	@Override
+	public void delMenu(Long menuId) {
+		topicMenuDao.delete(menuId);
+	}
+
+	@Override
+	public void delMenu(String menuIds) {
+		String[] ids = menuIds.split(",");
+		for (String idstr : ids) {
+			Long id = Long.parseLong(idstr);
+			topicMenuDao.delete(id);
+		}
+	}
+
+	@Override
+	public void addMenu(String menuName) {
+		TopicMenu topicMenu = new TopicMenu();
+		topicMenu.setName(menuName);
+		topicMenuDao.save(topicMenu);
+	}
+
+	@Override
+	public void updata(Long menuId, String menuName) {
+		TopicMenu topicMenu = topicMenuDao.getById(menuId);
+		topicMenu.setName(menuName);
+		topicMenuDao.updata(topicMenu);
+	}
+
+	@Override
+	public PageBean getTopciPageBean(int currentPage, Long menuId, String key) {
+		return topicDao.getPage(currentPage, menuId,key);
+	}
+
+	@Override
+	public void delTopic(Long topicId) {
+		topicDao.delete(topicId);
+	}
+
+	@Override
+	public void delTopic(String topidIds) {
+		String[] ids = topidIds.split(",");
+		for (String idstr : ids) {
+			Long id = Long.parseLong(idstr);
+			topicDao.delete(id);
+		}
+	}
+
+	@Override
+	public void pingbiAnswer(Long topicAnswerId) {
+		TopicAnswer topicAnswer = topicAnswerDao.getById(topicAnswerId);
+		topicAnswer.setStatus(2);
+		topicAnswerDao.updata(topicAnswer);
+	}
+
 
 }

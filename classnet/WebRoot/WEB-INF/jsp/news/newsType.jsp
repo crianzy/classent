@@ -62,10 +62,11 @@
           <div class="childclasslist_box">
           <h3>${newsType.name }</h3>
           <ul class="listStyle1">
-			<s:iterator value="#newsType.allnews">
+			<s:iterator value="list">
 		 		<li><a target="_blank" href="newsAction_readNews?newsId=${id }">${title } </a><s:date name="pubTime" format="MM-dd"/> </li>
 		 	</s:iterator>
           </ul>
+          <jsp:include page="/WEB-INF/jsp/pub/page.jsp" ></jsp:include>
           </div>
           <!-- 子栏目列表信息列表结束 -->
           <!-- 分页 -->
@@ -99,5 +100,10 @@
 			<div class="clearbox"></div>
 			<jsp:include page="/WEB-INF/jsp/pub/footer.jsp"></jsp:include>
 		</div>
+		<script type="text/javascript">
+			function gotoPage(num){
+				location="newsAction_newsType?newsTypeId=${newsType.id }&currentPage="+num
+			}
+		</script>
 	</body>
 </html>

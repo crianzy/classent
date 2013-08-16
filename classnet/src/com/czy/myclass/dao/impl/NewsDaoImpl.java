@@ -81,4 +81,21 @@ public class NewsDaoImpl extends BaseDaoImpl<News> implements NewsDao {
 		return new PageBean(currentPage, list, recordCount.intValue(), pageSize);
 	}
 
+	@Override
+	public List<News> getTouTiaoNews(int n) {
+		List<News> newsList = getSession()
+				.createQuery(
+						"FROM News news WHERE news.status = 3 ORDER By news.pubTime DESC")//
+				.setMaxResults(n)//
+				.list();
+		return newsList;
+	}
+
+	@Override
+	public News getBigPicNews() {
+		News news = (News) getSession().createQuery("FROM News news WHERE news.status = 4 ORDER By news.pubTime DESC")//
+				.setMaxResults(1).uniqueResult();
+		return news;
+	}
+
 }

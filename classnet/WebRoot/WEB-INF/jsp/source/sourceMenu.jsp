@@ -67,12 +67,18 @@
 								<div class="childclasslist_box">
 						          <h3>${sourceMenu.name}</h3>
 						          <ul class="listStyle1">
-						          	<s:iterator value="#sourceMenu.sources">
+						          	<s:iterator value="list">
 						          		<li><a href="sourceAction_download?sourceId=${id }">${name}</a>
 						          			<s:date name="pubTime" format="MM-dd"/>
 						          		</li>
 						          	</s:iterator>
 						          </ul>
+						          <jsp:include page="/WEB-INF/jsp/pub/page.jsp" ></jsp:include>
+						          <script type="text/javascript">
+									function gotoPage(num){
+										location="sourceAction_sourceMenu?sourceMenuId="+${sourceMenu.id}+"&currentPage="+num
+									}
+								</script>
 						          </div>
 						          <div class="c_spacing"></div>
 						         <div class="class_page"><span class="pagecss">

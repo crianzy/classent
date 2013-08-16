@@ -11,5 +11,7 @@ public interface TopicDao extends BaseDao<Topic> {
 
 	PageBean getPage(int currentPage, Long parentId);
 
+	PageBean getPage(int currentPage, Long menuId, String key);
+
 
 }

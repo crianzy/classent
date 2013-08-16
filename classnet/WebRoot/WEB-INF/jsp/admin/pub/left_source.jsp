@@ -3,13 +3,13 @@
 <script type="text/javascript">
 document.write("<ul>");
 var url = document.URL;
-if(url.indexOf("sourceMenuManage")!=-1){
+if(url.indexOf("menuList")!=-1){
 	document.write('<li class="bj"><a href="admin/sourceAdminAction_menuList">资源目录管理</a></li>');
 }
 else{
 	document.write('<li><a href="admin/sourceAdminAction_menuList">资源目录管理</a></li>');
 }
-if(url.indexOf("sourceManage")!=-1){
+if(url.indexOf("sourceList")!=-1){
 	document.write('<li class="bj"><a href="admin/sourceAdminAction_sourceList">资源管理</a></li>');
 }
 else{

@@ -66,7 +66,8 @@ public class ClazzServiceImpl implements ClazzService {
 
 	@Override
 	public List<Clazz> getLastClazz() {
-		List<Clazz> clazzList = clazzDao.getLastCLazz(6);
+		//TODO  最新课程 硬编码
+		List<Clazz> clazzList = clazzDao.getLastCLazz(8);
 		return clazzList;
 	}
 

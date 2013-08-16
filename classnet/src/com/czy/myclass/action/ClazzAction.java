@@ -12,6 +12,7 @@ import com.czy.myclass.domain.Clazz;
 import com.czy.myclass.domain.ClazzMenu;
 import com.czy.myclass.domain.ClazzType;
 import com.czy.myclass.dto.ClazzMenuDto;
+import com.czy.myclass.dto.PageBean;
 import com.czy.myclass.service.ClazzService;
 import com.opensymphony.xwork2.ActionContext;
 
@@ -30,7 +31,8 @@ public class ClazzAction extends BaseAction {
 	private String inputPath;
 	private String filename;
 	private String fileContentType;
-	
+	private int currentPage = 1;
+
 	private List<ClazzMenuDto> secondClazzMenuDto;
 
 	public String index() {
@@ -47,12 +49,6 @@ public class ClazzAction extends BaseAction {
 		ActionContext.getContext().put("lastClazz", lastClazz);
 
 		return "index";
-	}
-
-	public String changeFirstMenu() {
-		// TODO 在json 解析传输时抛 exception
-		secondClazzMenuDto = clazzService.getSecondClazzMenu(pmenuId);
-		return "changeFirstMenu";
 	}
 
 	public String clazz() {
@@ -76,60 +72,67 @@ public class ClazzAction extends BaseAction {
 
 		List<Clazz> clazzList = clazzService.searchClazz(pmenuId, menuId,
 				clazzTypeId, keyWord);
+		PageBean pageBean = clazzService.getClazzPageBean(pmenuId, menuId,
+				clazzTypeId, keyWord, currentPage);
+		ActionContext.getContext().getValueStack().push(pageBean);
 		ActionContext.getContext().put("clazzList", clazzList);
-		return "toResult";
-	}
-
-	public String clazzMenu() {
-		// TODO 通过传 pmenuId 来获取下级的clazz信息
-
-		// 一级菜单 栏目列表
-		List<ClazzMenuDto> firstclazzMenList = clazzService.getFirstClazzMenu();
-		ActionContext.getContext().put("firstclazzMenList", firstclazzMenList);
-
-		// 课程类型
-		List<ClazzType> clazzTypeList = clazzService.getAllFileType();
-		ActionContext.getContext().put("clazzTypeList", clazzTypeList);
-
-		ClazzMenu clazzMenu = clazzService.getClazzMenuByid(pmenuId);
-		List<Clazz> clazzList = new ArrayList<Clazz>();
-		for (ClazzMenu secondClazzMenu : clazzMenu.getChildrenClassMenu()) {
-			for (Clazz clazz : secondClazzMenu.getClazzs()) {
-				clazzList.add(clazz);
-			}
+		
+		if(pmenuId!=null){
+			List<ClazzMenuDto> childMenuList = clazzService.getSecondClazzMenu(pmenuId);
+			ActionContext.getContext().put("childMenuList", childMenuList);
 		}
-		ActionContext.getContext().put("clazzMenu", clazzMenu);
-		ActionContext.getContext().put("clazzList", clazzList);
 		return "toResult";
 	}
 
-	public String secondClazzMenu() {
-		// TODO获取二级菜单信息
-		// 已经菜单 栏目列表
-		List<ClazzMenuDto> firstclazzMenList = clazzService.getFirstClazzMenu();
-		ActionContext.getContext().put("firstclazzMenList", firstclazzMenList);
+	// public String clazzMenu() {
+	// // TODO 通过传 pmenuId 来获取下级的clazz信息
+	//
+	// // 一级菜单 栏目列表
+	// List<ClazzMenuDto> firstclazzMenList = clazzService.getFirstClazzMenu();
+	// ActionContext.getContext().put("firstclazzMenList", firstclazzMenList);
+	//
+	// // 课程类型
+	// List<ClazzType> clazzTypeList = clazzService.getAllFileType();
+	// ActionContext.getContext().put("clazzTypeList", clazzTypeList);
+	//
+	// ClazzMenu clazzMenu = clazzService.getClazzMenuByid(pmenuId);
+	// List<Clazz> clazzList = new ArrayList<Clazz>();
+	// for (ClazzMenu secondClazzMenu : clazzMenu.getChildrenClassMenu()) {
+	// for (Clazz clazz : secondClazzMenu.getClazzs()) {
+	// clazzList.add(clazz);
+	// }
+	// }
+	// ActionContext.getContext().put("clazzMenu", clazzMenu);
+	// ActionContext.getContext().put("clazzList", clazzList);
+	// return "toResult";
+	// }
 
-		// 课程类型
-		List<ClazzType> clazzTypeList = clazzService.getAllFileType();
-		ActionContext.getContext().put("clazzTypeList", clazzTypeList);
+	// public String secondClazzMenu() {
+	// // TODO 获取二级菜单信息
+	// // 已经菜单 栏目列表
+	// List<ClazzMenuDto> firstclazzMenList = clazzService.getFirstClazzMenu();
+	// ActionContext.getContext().put("firstclazzMenList", firstclazzMenList);
+	//
+	// // 课程类型
+	// List<ClazzType> clazzTypeList = clazzService.getAllFileType();
+	// ActionContext.getContext().put("clazzTypeList", clazzTypeList);
+	//
+	// ClazzMenu clazzMenu = clazzService.getClazzMenuByid(menuId);
+	// ActionContext.getContext().put("clazzMenu", clazzMenu);
+	// ActionContext.getContext().put("clazzList",
+	// clazzMenu.getChildrenClassMenu());
+	// return "toResult";
+	// }
 
-		ClazzMenu clazzMenu = clazzService.getClazzMenuByid(menuId);
-		ActionContext.getContext().put("clazzMenu", clazzMenu);
-		ActionContext.getContext().put("clazzList",
-				clazzMenu.getChildrenClassMenu());
-		return "toResult";
-	}
-
-	
-	public String download(){
+	public String download() {
 		Clazz clazz = clazzService.getClazzById(clazzId);
 		this.filename = clazz.getFilename();
 		this.fileContentType = clazz.getFielContentType();
-		this.inputPath = "/file/clazz/clazz/"+this.filename;
+		this.inputPath = "/file/clazz/clazz/" + this.filename;
 		System.out.println(inputPath);
 		return "download";
 	}
-	
+
 	public Long getClazzId() {
 		return clazzId;
 	}
@@ -209,11 +212,18 @@ public class ClazzAction extends BaseAction {
 	public void setFileContentType(String fileContentType) {
 		this.fileContentType = fileContentType;
 	}
-	
+
 	public InputStream getInputStream() throws Exception {
-		return ServletActionContext.getServletContext().getResourceAsStream(inputPath);
+		return ServletActionContext.getServletContext().getResourceAsStream(
+				inputPath);
 	}
-	
-	
+
+	public int getCurrentPage() {
+		return currentPage;
+	}
+
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
+	}
 
 }

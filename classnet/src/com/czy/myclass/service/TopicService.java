@@ -26,6 +26,22 @@ public interface TopicService extends BaseService{
 	public PageBean getTopicPageBean(int currentPage,Long topicMenuId);
 	
 	public PageBean getAnswerPageBean(int currentPage,Long topicId);
+
+	public void delMenu(Long menuId);
+
+	public void delMenu(String ids);
+
+	public void addMenu(String menuName);
+
+	public void updata(Long menuId, String menuName);
+
+	public PageBean getTopciPageBean(int currentPage, Long menuId, String key);
+
+	public void delTopic(Long topicId);
+
+	public void delTopic(String ids);
+
+	public void pingbiAnswer(Long topicAnswerId);
 	
 
 }

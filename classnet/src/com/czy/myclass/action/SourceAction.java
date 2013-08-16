@@ -11,7 +11,9 @@ import com.czy.myclass.domain.Clazz;
 import com.czy.myclass.domain.News;
 import com.czy.myclass.domain.Source;
 import com.czy.myclass.domain.SourceMenu;
+import com.czy.myclass.dto.PageBean;
 import com.opensymphony.xwork2.ActionContext;
+import com.sun.mail.imap.ACL;
 
 @Controller
 @Scope("prototype")
@@ -24,7 +26,7 @@ public class SourceAction extends BaseAction{
 	private String inputPath;
 	private String filename;
 	private String fileContentType;
-
+	private int currentPage = 1;
 	public String index() {
 		// 热点新闻
 		List<News> hotNewsList = newsService.getHotNews();
@@ -51,6 +53,8 @@ public class SourceAction extends BaseAction{
 		// 资源 sourceMenu
 		SourceMenu sourceMenu = sourceService.getSourceMenu(sourceMenuId);
 		ActionContext.getContext().put("sourceMenu", sourceMenu);
+		PageBean pageBean = sourceService.getPageBeanSource(sourceMenuId,null,currentPage);
+		ActionContext.getContext().getValueStack().push(pageBean);
 		return "sourceMenu";
 	}
 
@@ -104,6 +108,14 @@ public class SourceAction extends BaseAction{
 
 	public void setFileContentType(String fileContentType) {
 		this.fileContentType = fileContentType;
+	}
+
+	public int getCurrentPage() {
+		return currentPage;
+	}
+
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
 	}
 
 }

@@ -22,10 +22,12 @@ public class HomeAction extends BaseAction {
 
 	@Override
 	public String execute() throws Exception {
-		// 推荐新闻
-		List<News> tuijianNewsList = newsService.getTuijianNews();
-		ActionContext.getContext().put("tuijianNewsList", tuijianNewsList);
-		
+		//头条新闻
+		List<News> touTiaoNewsList = newsService.getTouTiaoNews();
+		ActionContext.getContext().put("touTiaoNewsList", touTiaoNewsList);
+		// 首页 大图新闻
+		News bigPicnews = newsService.getBigPicNews();
+		ActionContext.getContext().put("bigPicnews", bigPicnews);
 		//课程中心 
 		//课程一级菜单
 		List<ClazzMenuDto> clazzMenuDtoList = clazzService.getFirstClazzMenu();

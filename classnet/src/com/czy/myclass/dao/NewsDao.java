@@ -27,4 +27,8 @@ public interface NewsDao extends BaseDao<News>{
 	public PageBean getPageBean(int currentPage);
 
 	public PageBean getPageBeanSearch(int currentPage, Long menuId, String key);
+
+	public List<News> getTouTiaoNews(int i);
+
+	public News getBigPicNews();
 }

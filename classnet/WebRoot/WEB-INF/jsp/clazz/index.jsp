@@ -103,7 +103,7 @@
 											<li>
 												<div class="pe_u_thumb">
 													<a href="clazzAction_clazz?clazzId=${id }" target="_blank">
-														<img src="/images/${img}" width="160" height="120" border="0">
+														<img src="file/clazz/img/${img }" width="160" height="120" border="0">
 													</a>
 												</div>
 												<div class="pe_u_thumb_title">

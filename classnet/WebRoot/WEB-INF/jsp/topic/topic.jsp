@@ -111,7 +111,7 @@
 								</tr>
 								<tr>
 									<td height="160" bgcolor="#ffffff" align="left" valign="top" style="padding:10px;">
-										<s:if test="status=1">
+										<s:if test="status==1">
 											${content}
 										</s:if>
 										<s:else>
@@ -129,10 +129,10 @@
 												function pingbi(id){
 													$.ajax({
 														type:"get",
-														url:"<c:url value="/pingbi.do"/>",
-														data:"id="+id,
+														url:"admin/topicAdminAction_pingbiAnswer?",
+														data:"topicAnswerId="+id,
 														success:function(msg){
-															if(msg=="1"){
+															if(msg.flag=="1"){
 																alert("操作成功");
 																location.href=location.href;
 															}
@@ -180,7 +180,7 @@
 									</td>
 									<td width="80%" valign="top">
 										<form action="topicAction_reply" method="post" style="margin:0" onsubmit="return check()">
-										<script>
+										<script type="text/javascript">
 											function check(){
 												var oEditor = FCKeditorAPI.GetInstance("content");            
 										        if(oEditor.GetXHTML() == "" || oEditor.GetXHTML() == "<br />"){  

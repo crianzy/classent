@@ -36,12 +36,14 @@
 			<div id="column1">
 				<div id="flashNews">
 					<div style="width:300px;height: 230px;float:right;text-align:center">
-						flash
+						<a href="newsAction_readNews?newsId=${bigPicnews.id }" target="_blank">
+							<img src="file/news/${bigPicnews.img }" alt="${bigPicnews.title }" width="300px"  height="240px"/>
+						</a>
 					</div>
 				</div>
 				<div id="newsList">
 					<ul class="listStyle1">
-						<s:iterator value="#tuijianNewsList">
+						<s:iterator value="#touTiaoNewsList">
 							<li><a target="_blank" href="newsAction_readNews?newsId=${id }">${title } </a><s:date name="pubTime" format="MM-dd"/> </li>
 						</s:iterator>
 					</ul>
@@ -73,7 +75,7 @@
 								<li>
 									<div class="pe_u_thumb">
 										<a href="clazzAction_clazz?clazzId=${id }" target="_blank">
-											<img  width="160" height="120" border="1" src="${img }"/>
+											<img  width="160" height="120"   src="file/clazz/img/${img }"/>
 										</a>
 									</div>
 									<div class="pe_u_thumb_title">

@@ -51,6 +51,7 @@ public class NewsServiceImpl implements NewsSevrice{
 	@Override
 	public List<News> getTuijianNews() {
 		List<News> newsList = null;
+		//推荐新闻 硬编码
 		newsList = newsDao.getTuijianNews(8);
 		return newsList;
 	}
@@ -186,6 +187,19 @@ public class NewsServiceImpl implements NewsSevrice{
 		News news = newsDao.getById(newsId);
 		news.setStatus(status);
 		newsDao.updata(news);
+	}
+
+
+	@Override
+	public List<News> getTouTiaoNews() {
+		
+		return newsDao.getTouTiaoNews(8);
+	}
+
+
+	@Override
+	public News getBigPicNews() {
+		return newsDao.getBigPicNews();
 	}
 	
 	

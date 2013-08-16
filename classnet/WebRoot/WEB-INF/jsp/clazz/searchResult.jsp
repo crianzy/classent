@@ -41,25 +41,30 @@
 								<select name="pmenuId" id="pmenuId" style="width:100px;" onchange="changemenu(this.value)">
 									<option value="0">请选择</option>
 									<s:iterator value="firstclazzMenList">
-										<option value="${id }">${name }</option>
+										<option value="${id }" ${id == pmenuId?'selected=selected':''} >${name }</option>
 									</s:iterator>
 								</select>
 								&nbsp;
 								学科二级目录:
 								<select name="menuId" id="menuId" style="width:100px;">
 									<option value="0">请选择</option>
+									<s:if test="#childMenuList != null">
+										<s:iterator value="childMenuList">
+											<option value="${id}" ${id== menuId? 'selected=selected':''}>${name }</option>
+										</s:iterator>
+									</s:if>
 								</select>
 								&nbsp;
 								文件类型:
 								<select name="ft" id="ft" style="width:100px;">
 									<option value="0">请选择</option>
 									<s:iterator value="clazzTypeList">
-										<option value="${id }">${name }</option>
+										<option value="${id }" ${id == clazzTypeId? 'selected=selected':''}>${name }</option>
 									</s:iterator>
 								</select>
 							</div><!-- <div style="padding-top:10px; -->
 							<div style="padding-top:10px;text-align: center">
-								<input type="text" size="70" name="keyWord" id="key" style="height: 20px;"/>
+								<input type="text" size="70" name="keyWord" id="key" style="height: 20px;" value="${keyWord }"/>
 								<input type="button" value="搜索" style="width: 60px;" onclick="search()"/>
 							</div>
 						</div><!-- <div class="r_ad" -->
@@ -71,12 +76,11 @@
 								</dt>
 								<dd class="c_content">
 									<div class="a_photo_list">
-										<!-- 显示8张最新图片文章 -->
-										<s:iterator value="clazzList">
+										<s:iterator value="list">
 											<li>
 												<div class="pe_u_thumb">
 													<a href="clazzAction_clazz?clazzId=${id }" target="_blank">
-														<img src="/images/${img}" width="160" height="120" border="0">
+														<img src="file/clazz/img/${img }" width="160" height="120" border="0">
 													</a>
 												</div>
 												<div class="pe_u_thumb_title">
@@ -85,8 +89,8 @@
 												</div>
 											</li>
 										</s:iterator>
-										
 									</div>
+									<jsp:include page="/WEB-INF/jsp/pub/page.jsp" ></jsp:include>
 									<div class="clearbox"></div>
 									<div class="class_page"><span class="pagecss">
 							 		</span></div>
@@ -107,7 +111,7 @@
 								<ul class="subjectList">
 									<s:iterator value="firstclazzMenList">
 										<li>
-											<a href="clazzAction_clazzMenu?pmenuId=${id }">${name }</a>
+											<a href="clazzAction_search?pmenuId=${id }">${name }</a>
 										</li>
 										<s:if test="st.index%2==0">
 											<div class="clearbox"></div>
@@ -168,6 +172,33 @@
 			location = url;
 		}
 		
+	}
+	
+	function gotoPage(num){
+		var url = 'clazzAction_search?currentPage='+num;
+		var pmId = $("#pmenuId").val();
+		var mId = $("#menuId").val();
+		var ftId = $("#ft").val();
+		var key = $("#key").val();
+		if(pmId==0&&mId==0&&ftId==0&&key==""){
+			location = url;
+			return ;
+		}else{
+			if(pmId!=0){
+			url += '&pmenuId='+pmId;
+			}
+			if(mId!=0){
+				url += '&menuId='+mId;
+			}
+			if(ftId!=0){
+				url += '&clazzTypeId='+ftId;
+			}
+			if(key!=""){
+				url += '&keyWord='+key;
+			}
+			url = url.replace(/\?&/,"?");
+			location = url;
+		}
 	}
 </script>	
 </body>

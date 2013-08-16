@@ -61,10 +61,10 @@ $(function(){
 	<div class="xitong">
 		<h3>系统参数</h3>
 		<ul>
-		<li>新闻数量：${newsCount }条 <a href="">查看</a></li>
-		<li>课程数量：${clazzCount }条 <a href="">查看</a></li>
-		<li>资源数量：${sourceCount }个 <a href="">查看</a></li>
-		<li>帖子数量：${topicCount }条 <a href="">查看</a></li>
+		<li>新闻数量：${newsCount }条 <a href="admin/newsAdminAction_newsManage">查看</a></li>
+		<li>课程数量：${clazzCount }条 <a href="admin/clazzAdminAction_clazzList">查看</a></li>
+		<li>资源数量：${sourceCount }个 <a href="admin/sourceAdminAction_sourceList">查看</a></li>
+		<li>帖子数量：${topicCount }条 <a href="admin/topicAdminAction_topicList">查看</a></li>
 		<li>登陆IP：127.0.0.1</li>
 		<li>当前时间：<span id="time"></span></li>
 		<li>最后登陆IP：127.0.0.1</li>

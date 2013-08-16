@@ -83,7 +83,7 @@ public class ClazzDaoImpl extends BaseDaoImpl<Clazz> implements ClazzDao {
 			where = where + " AND clazz.name LIKE '%"+ key +"%' ";
 		}
 		List list = getSession().createQuery(//
-				hql + where)//
+				hql + where +" ORDER BY clazz.pubTime DESC  ")//
 				.setFirstResult((currentPage-1)*pageSize)//
 				.setMaxResults(pageSize)//
 				.list();
