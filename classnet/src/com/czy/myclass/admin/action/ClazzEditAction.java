@@ -24,7 +24,7 @@ import com.opensymphony.xwork2.ModelDriven;
 @Scope("prototype")
 public class ClazzEditAction extends BaseAdminAction implements
 		ModelDriven<Clazz> {
-	private static final int BUFFER_SIZE = 16 * 1024;
+	private static final int BUFFER_SIZE =  1024;
 	private static final long serialVersionUID = -8633937618808225658L;
 
 	private Clazz clazz = new Clazz();
@@ -82,6 +82,7 @@ public class ClazzEditAction extends BaseAdminAction implements
 					+ this.clazzFileFileName);
 			copy(this.clazzFile, imageFile);
 			clazz.setFilename(this.clazzFileFileName);
+			clazz.setFielContentType(this.clazzFileContentType);
 		}
 
 		if (flashFile != null) {
@@ -143,13 +144,12 @@ public class ClazzEditAction extends BaseAdminAction implements
 			InputStream in = null;
 			OutputStream out = null;
 			try {
-				in = new BufferedInputStream(new FileInputStream(src),
-						BUFFER_SIZE);
-				out = new BufferedOutputStream(new FileOutputStream(dst),
-						BUFFER_SIZE);
+				in = new BufferedInputStream(new FileInputStream(src));
+				out = new BufferedOutputStream(new FileOutputStream(dst));
 				byte[] buffer = new byte[BUFFER_SIZE];
-				while (in.read(buffer) > 0) {
-					out.write(buffer);
+				int offset = 0;
+				while ((offset = in.read(buffer, 0, buffer.length)) != -1) {
+					out.write(buffer,0,offset);
 				}
 			} finally {
 				if (null != in) {

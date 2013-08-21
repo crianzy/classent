@@ -1,4 +1,4 @@
-package com.czy.meclass.install;
+package com.czy.myclass.install;
 
 import javax.annotation.Resource;
 
@@ -6,17 +6,17 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.czy.myclass.domain.User;
 
-@Controller
+@Service
 public class Installer {
 
 	@Resource
 	private SessionFactory sessionFactory;
-	
+
 	@Transactional
 	public void install() {
 		Session session = sessionFactory.getCurrentSession();
@@ -26,10 +26,9 @@ public class Installer {
 		user.setPassword("admin");
 		user.setAuthorite("ROLE_SUPERVISOR");
 		session.save(user);
-		
-		
-		
+
 	}
+
 	public static void main(String[] args) {
 		System.out.println("正在执行安装...");
 
