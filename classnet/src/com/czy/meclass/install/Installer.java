@@ -27,6 +27,8 @@ public class Installer {
 		user.setAuthorite("ROLE_SUPERVISOR");
 		session.save(user);
 		
+		
+		
 	}
 	public static void main(String[] args) {
 		System.out.println("正在执行安装...");
