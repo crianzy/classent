@@ -98,7 +98,10 @@
 		<action name="masterAction_*" class="masterAction" method="{1}">
 			<result name="index">/WEB-INF/jsp/master/index.jsp</result>
 			<result name="postTopicUI">/WEB-INF/jsp/master/postTopicUI.jsp</result>
-			<result name="toTopic" type="redirectAction">topicAction_topic?topicId=${topicId } </result>
+			<result name="toTopic" type="redirectAction">
+				<param name="actionName">topicAction_topic?topicId=${topicId }</param>
+				<param name="namespace">/</param>
+			</result>
 			<result name="myTopicList">/WEB-INF/jsp/master/myTopicList.jsp</result>
 		</action>
 	</package>

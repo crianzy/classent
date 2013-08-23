@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.multipart.maxSize" value="1000000000" />
+
+	<package name="admin" namespace="/admin" extends="json-default">
+		<!-- 要放在最上边 不然报错 -->
+		<interceptors>
+			<!-- 声明一个拦截器 -->
+			<interceptor name="checkePrivilege"
+				class="com.czy.myclass.interceptor.CheckPrivilegeInterceptor"></interceptor>
+
+			<!-- 重新定义defaultStack拦截器栈，需要先判断权限 -->
+			<interceptor-stack name="defaultStack">
+				<interceptor-ref name="checkePrivilege" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		<global-results>
+			<result name="noPrivilege" type="redirectAction">
+				<param name="actionName">home</param>
+				<param name="namespace">/</param>
+			</result>
+			<result name="loginUI">
+				<param name="actionName">userAction_loginUI</param>
+				<param name="namespace">/</param>
+			</result>
+		</global-results>
+
+		<action name="index" class="indexAction">
+			<result name="success">/WEB-INF/jsp/admin/index.jsp</result>
+		</action>
+		<action name="userAdminAction_*" class="userAdminAction"
+			method="{1}">
+			<result name="list">/WEB-INF/jsp/admin/user/userList.jsp</result>
+			<result name="searchResult">/WEB-INF/jsp/admin/user/userList.jsp</result>
+			<result name="changeUserStatus" type="json">
+				<param name="ignoreHierarchy">false</param>  
+			</result>
+		</action>
+		<action name="newsAdminAction_*" class="newsAdminAction"
+			method="{1}">
+			<result name="newsMenuManage">/WEB-INF/jsp/admin/news/newsMenuManage.jsp
+			</result>
+			<result name="toNewsMenuManage" type="redirectAction">newsAdminAction_newsMenuManage
+			</result>
+			<result name="json" type="json">
+				<param name="ignoreHierarchy">false</param>  
+			</result>
+			<result name="newsManage">/WEB-INF/jsp/admin/news/newsManage.jsp</result>
+			<result name="toNewsManage" type="redirectAction"> newsAdminAction_newsManage
+			</result>
+		</action>
+		<action name="newsEidtAction_*" class="newsEidtAction" method="{1}">
+			<result name="editUI">/WEB-INF/jsp/admin/news/pubNews.jsp</result>
+			<result name="toNewsManage" type="redirectAction">newsAdminAction_newsManage
+			</result>
+			<result name="toNewsMenuManage" type="redirectAction">newsAdminAction_newsMenuManage
+			</result>
+		</action>
+		<action name="clazzAdminAction_*" class="clazzAdminAction"
+			method="{1}">
+			<result name="clazzMenuList">/WEB-INF/jsp/admin/clazz/menuList.jsp</result>
+			<result name="toClazzMenuList" type="redirectAction">clazzAdminAction_clazzMenuList?parentId=${parentId
+				}
+			</result>
+			<result name="json" type="json">
+				<param name="ignoreHierarchy">false</param> 
+			</result>
+			<result name="clazzTypeList">/WEB-INF/jsp/admin/clazz/typeList.jsp</result>
+			<result name="toClazzTypeList" type="redirectAction">clazzAdminAction_clazzTypeList
+			</result>
+			<result name="clazzList">/WEB-INF/jsp/admin/clazz/clazzList.jsp</result>
+			<result name="toClazzList" type="redirectAction">clazzAdminAction_clazzList
+			</result>
+		</action>
+		<action name="clazzEditAction_*" class="clazzEditAction"
+			method="{1}">
+			<result name="editUI">/WEB-INF/jsp/admin/clazz/addClazz.jsp</result>
+			<result name="toClazzList" type="redirectAction">clazzAdminAction_clazzList
+			</result>
+		</action>
+
+		<action name="sourceAdminAction_*" class="sourceAdminAction"
+			method="{1}">
+			<result name="menuList">/WEB-INF/jsp/admin/source/sourceMenuList.jsp
+			</result>
+			<result name="toMenuList" type="redirectAction">sourceAdminAction_menuList
+			</result>
+			<result name="json" type="json">
+				<param name="ignoreHierarchy">false</param> 
+			</result>
+			<result name="sourceList">/WEB-INF/jsp/admin/source/sourceList.jsp</result>
+			<result name="toSourceList" type="redirectAction">sourceAdminAction_sourceList
+			</result>
+		</action>
+		<action name="sourceEditAction_*" class="sourceEditAction"
+			method="{1}">
+			<result name="editUI">/WEB-INF/jsp/admin/source/addSource.jsp</result>
+			<result name="toSourceList" type="redirectAction">sourceAdminAction_sourceList
+			</result>
+		</action>
+		<action name="topicAdminAction_*" class="topicAdminAction"
+			method="{1}">
+			<result name="menuList">/WEB-INF/jsp/admin/topic/topicMenuList.jsp
+			</result>
+			<result name="toMenuList" type="redirectAction"> topicAdminAction_menuList
+			</result>
+			<result name="topicList">/WEB-INF/jsp/admin/topic/topicList.jsp</result>
+			<result name="toTopicList" type="redirectAction">topicAdminAction_topicList
+			</result>
+			<result name="json" type="json">
+				<param name="ignoreHierarchy">false</param> 
+			</result>
+		</action>
+
+	</package>
+	<!-- Add packages here -->
+</struts>
