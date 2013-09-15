@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.czy.myclass.domain">
+
+	<class name="News" >
+		<id name="id">
+			<generator class="native" />
+		</id>
+		<property name="title" />
+		<property name="author" />
+		<property name="source"/>
+		<property name="pubTime"/>
+		<property name="content" type="text"/>
+		<property name="viewNum"/>
+		<property name="img"/>
+		<property name="status"/>
+		<many-to-one name="newsType" column="newsTypeId" class="NewsType" lazy="false"></many-to-one>		
+	</class>
+
+</hibernate-mapping>

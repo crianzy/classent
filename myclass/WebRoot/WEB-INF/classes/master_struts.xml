@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.multipart.maxSize" value="1000000000" />
+
+
+	<package name="master" namespace="/master" extends="struts-default">
+		<!-- 要放在最上边 不然报错 -->
+		<interceptors>
+			<!-- 声明一个拦截器 -->
+			<interceptor name="checkeLogin"
+				class="com.czy.myclass.interceptor.CheckLoginInterceptor"></interceptor>
+
+			<!-- 重新定义defaultStack拦截器栈，需要先判断权限 -->
+			<interceptor-stack name="defaultStack">
+				<interceptor-ref name="checkeLogin" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<global-results>
+			<result name="loginUI">/WEB-INF/jsp/loginUI.jsp</result>
+		</global-results>
+		<action name="masterAction_*" class="masterAction" method="{1}">
+			<result name="index">/WEB-INF/jsp/master/index.jsp</result>
+			<result name="postTopicUI">/WEB-INF/jsp/master/postTopicUI.jsp</result>
+			<result name="toTopic" type="redirectAction">
+				<param name="actionName">topicAction_topic?topicId=${topicId }</param>
+				<param name="namespace">/</param> 
+			</result>
+			<result name="myTopicList">/WEB-INF/jsp/master/myTopicList.jsp</result>
+		</action>
+	</package>
+	
+</struts>
